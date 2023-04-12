@@ -41,6 +41,19 @@ noteObj.forEach(function(item, index){
     console.log(item)
 })
 
+//INDEX OF - find index of the item 
+const fruits = ['apple', 'banana', 'orange', 'pear'];
+
+const index = fruits.indexOf('pear')
+
+if(index!= -1){
+    console.log(`Found at index ${index}`)
+}
+else{
+    console.log('Not found')
+}
+
+//FIND INDEX for objects 
 //Returns the index of the first element in the array where predicate is true, and -1 otherwise.
 const searchIndex = noteObj.findIndex(function(note, title){
     console.log(note)
@@ -55,3 +68,4 @@ This can sometimes lead to unexpected results, especially when comparing values 
 */
 
 // === --> 1 === '1' evaluates FALSE, compares two values for equality, but it does not perform type coercion.
+
