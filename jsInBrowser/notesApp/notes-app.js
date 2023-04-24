@@ -1,3 +1,6 @@
+//challenge -  Add notes dynamically 
+// Filter notes with a search field
+// Remove all notes 
 const noteObj = [{
     title: "My next trip",
     body: "I would like to go to Orlando"
@@ -12,18 +15,32 @@ const noteObj = [{
     body: "Undefeated Brain"
 }]
 
-//query and remove first occurance 
-const p = document.querySelector('p')
-console.log(p)
-//p.remove()
+//Add notes dynamically 
+/*
+let noteObj = []
+const addNote= function(){
+    const title = document.getElementById("title").value
+    const body = document.getElementById("body").value
+    const newNote = {
+        Title: `${title}`,
+        Body: `${body}`
+    }
+    noteObj.push(newNote)
+    console.log(newNote)
 
-//Query all and remove, get text and set text
+//Create li element and link li to the new note add
+const newListItem = document.createElement('li')
+newListItem.appendChild()
 
-const ps = document.querySelectorAll('p')
-ps.forEach(function(p){
-    //p.textContent = '###'
-    //console.log(p.textContent)
-    //p.remove()
-})
+}
+*/
 
+//With field and button click, call addNote function and add new li element to the list 
+document.querySelector('#add-note').addEventListener('change', function(e){
+    let newtodoItem = e.target.value
+    let newEle = document.createElement('p')
+    newEle.textContent  = newtodoItem
+    document.querySelector('body').appendChild(newEle)
+}) 
 
+//
