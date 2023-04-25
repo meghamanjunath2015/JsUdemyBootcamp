@@ -27,6 +27,10 @@ const todoObjList = [{
     text: 'Water plants',
     completed: false
 }]
+
+const filters = {
+    searchText:''
+}
 /*
 //Challenge1 - Remove all p tags that have "the" in it
 const ps = document.querySelectorAll('p')
@@ -42,6 +46,7 @@ newLine.textContent = 'Add dog food to the amazon cart'
 document.querySelector('body').appendChild(newLine)
 */
 
+/*
 //Todo in browser Challenge 2 -  You still have 2 todo items left
 const incompleteTodo = todoObjList.filter(function(todo){
     return todo.completed == false
@@ -71,3 +76,46 @@ document.querySelector('#add-todo').addEventListener('change', function(e){
     newEle.textContent  = newtodoItem
     document.querySelector('body').appendChild(newEle)
 }) 
+*/
+//1. Setup Div for todo's
+//2. Setup filters and wire up new filter input to change it 
+//3. Create a render todo function to rerender latest filtered data
+const renderTodo = function(todoList, filters){
+    const filteredTodos = todoList.filter(function(todo){
+        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+    })
+    const incompleteTodo = filteredTodos.filter(function(todo){
+        return todo.completed == false
+    })
+    console.log(incompleteTodo)
+    
+    document.querySelector('#todos').innerHTML = ''
+
+    //Print how many items are left to complete 
+    const newTodoH1 = document.createElement('h2')
+    newTodoH1.textContent = `You have ${incompleteTodo.length} items to complete`
+    document.querySelector('#todos').appendChild(newTodoH1)
+    
+    incompleteTodo.forEach(element => {
+        const newLine1 = document.createElement('p')
+        newLine1.textContent = element.text
+        document.querySelector('#todos').appendChild(newLine1)
+    });
+}
+renderTodo(todoObjList, filters)
+
+//Listen to new todo creation
+document.querySelector('#add-button').addEventListener('click', function(e){
+    console.log('Add a new todo--')
+})
+
+//text change
+document.querySelector('#add-todo').addEventListener('change', function(e){
+    console.log(e.target.value)
+})
+
+//Assign search text to filters object and call render todo notes
+document.querySelector('#search-todo').addEventListener('input', function(e){
+    filters.searchText = e.target.value
+    renderTodo(todoObjList, filters)
+})
