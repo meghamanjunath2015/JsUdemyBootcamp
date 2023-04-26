@@ -53,11 +53,11 @@ document.querySelector('#add-note').addEventListener('click', function(e){
     e.target.textContent = 'Button was clicked'
 })
 
-document.querySelector('#remove-note').addEventListener('click', function(){
+/*document.querySelector('#remove-note').addEventListener('click', function(){
     document.querySelectorAll('.note').forEach(function(e){
         e.remove()
     })
-})
+})*/
 
 //change (e.target.value)
 document.querySelector('#search-input').addEventListener('change', function(e){
@@ -68,5 +68,12 @@ document.querySelector('#search-input').addEventListener('change', function(e){
 document.querySelector('#search-input').addEventListener('input', function(e){
     filters.searchText = e.target.value
     renderNotes(noteObj, filters)
+})
+
+//listen for form 
+document.querySelector('#form1').addEventListener('submit', function(e){
+    e.preventDefault()
+    console.log(e.target.elements.firstName.value)
+    e.target.elements.firstName.value = ''
 })
 

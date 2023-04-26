@@ -76,46 +76,82 @@ document.querySelector('#add-todo').addEventListener('change', function(e){
     newEle.textContent  = newtodoItem
     document.querySelector('body').appendChild(newEle)
 }) 
+
 */
 //1. Setup Div for todo's
 //2. Setup filters and wire up new filter input to change it 
 //3. Create a render todo function to rerender latest filtered data
 const renderTodo = function(todoList, filters){
-    const filteredTodos = todoList.filter(function(todo){
-        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
-    })
-    const incompleteTodo = filteredTodos.filter(function(todo){
-        return todo.completed == false
-    })
-    console.log(incompleteTodo)
-    
-    document.querySelector('#todos').innerHTML = ''
+    let list 
 
-    //Print how many items are left to complete 
-    const newTodoH1 = document.createElement('h2')
-    newTodoH1.textContent = `You have ${incompleteTodo.length} items to complete`
-    document.querySelector('#todos').appendChild(newTodoH1)
+    if(filters.searchText = ''){
+         list = todoObjList
+    }
+    else{
+        list = todoList.filter(function(todo){
+            return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+        })
+        //Print how many items are left to complete 
+        const newTodoH2 = document.createElement('h2')
+        newTodoH2.textContent = `You have ${list.length} items that matches your search`
+        document.querySelector('#todos').appendChild(newTodoH2)
+    }
+    document.querySelector('#todos').innerHTML = ''
     
-    incompleteTodo.forEach(element => {
+    list.forEach(element => {
         const newLine1 = document.createElement('p')
         newLine1.textContent = element.text
         document.querySelector('#todos').appendChild(newLine1)
     });
 }
+
+//Hide if completed
+const hideCompletedItems = function(todoList, filters, hideCompletedItem){
+    let desiredList = todoList.filter(function(todo){
+        renderTodo(todoList, filters)
+        if(!hideCompletedItem){
+            return todo
+        }
+    })
+    console.log(desiredList)
+    document.querySelector('#todos').innerHTML = ''
+
+    desiredList.forEach(element => {
+        const newLine1 = document.createElement('p')
+        newLine1.textContent = element.text
+        document.querySelector('#todos').appendChild(newLine1)
+    });
+
+}
+
 renderTodo(todoObjList, filters)
-
-//Listen to new todo creation
-document.querySelector('#add-button').addEventListener('click', function(e){
-    console.log('Add a new todo--')
-})
-
-//text change
-document.querySelector('#add-todo').addEventListener('change', function(e){
-    console.log(e.target.value)
-})
 
 //Assign search text to filters object and call render todo notes
 document.querySelector('#search-todo').addEventListener('input', function(e){
+    console.log(e.target.value)
     filters.searchText = e.target.value
     renderTodo(todoObjList, filters)
 })
+
+//Listen for form 
+document.querySelector('#todo-form').addEventListener('submit', function(e){
+    e.preventDefault()
+    //add a new item to the todo's array with the text data 
+    console.log(e.target.elements.todoText.value)
+    let newTodo = e.target.elements.todoText.value
+    //Add it to Todo Array 
+    todoObjList.push({
+        text: newTodo, 
+        completed: false
+    })
+    //clear the field value 
+    e.target.elements.todoText.value = ''
+    renderTodo(todoObjList,filters)
+})
+
+//listen for checkbox 
+document.querySelector('#hide-completed').addEventListener('change', function(e){
+    filters.searchText = ''
+    hideCompletedItems(todoObjList, filters, e.target.checked)
+})
+
