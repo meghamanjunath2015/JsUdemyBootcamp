@@ -29,7 +29,8 @@ const todoObjList = [{
 }]
 
 const filters = {
-    searchText:''
+    searchText:'',
+    hideComplete: false
 }
 /*
 //Challenge1 - Remove all p tags that have "the" in it
@@ -81,46 +82,52 @@ document.querySelector('#add-todo').addEventListener('change', function(e){
 //1. Setup Div for todo's
 //2. Setup filters and wire up new filter input to change it 
 //3. Create a render todo function to rerender latest filtered data
-const renderTodo = function(todoList, filters){
-    let list 
 
-    if(filters.searchText = ''){
-         list = todoObjList
-    }
-    else{
-        list = todoList.filter(function(todo){
-            return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
-        })
-        //Print how many items are left to complete 
-        const newTodoH2 = document.createElement('h2')
-        newTodoH2.textContent = `You have ${list.length} items that matches your search`
-        document.querySelector('#todos').appendChild(newTodoH2)
-    }
+
+const renderTodo = function(todoList, filters){
+    if(filters.searchText !== ''){
+    const list = todoList.filter(function(todo){
+        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+    })
+    //Print how many items are left to complete 
+    const newTodoH2 = document.createElement('p')
+    newTodoH2.textContent = `You have ${list.length} items that matches your search`
+    document.querySelector('#todos').appendChild(newTodoH2)
+
     document.querySelector('#todos').innerHTML = ''
-    
+
     list.forEach(element => {
         const newLine1 = document.createElement('p')
         newLine1.textContent = element.text
         document.querySelector('#todos').appendChild(newLine1)
-    });
-}
-
-//Hide if completed
-const hideCompletedItems = function(todoList, filters, hideCompletedItem){
-    let desiredList = todoList.filter(function(todo){
-        renderTodo(todoList, filters)
-        if(!hideCompletedItem){
-            return todo
-        }
-    })
-    console.log(desiredList)
+        })
+    }
+  else{
     document.querySelector('#todos').innerHTML = ''
 
-    desiredList.forEach(element => {
+     todoList.forEach(element => {
         const newLine1 = document.createElement('p')
         newLine1.textContent = element.text
         document.querySelector('#todos').appendChild(newLine1)
-    });
+        })
+    }
+}
+
+//Hide if completed
+const hideCompletedItems = function(todoList){
+    let list = todoList.filter(function(todo){
+        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase()) &&
+        todo.completed == false
+    })
+
+    console.log(list)
+    document.querySelector('#todos').innerHTML = ''
+
+    list.forEach(element => {
+        const newLine1 = document.createElement('p')
+        newLine1.textContent = element.text
+        document.querySelector('#todos').appendChild(newLine1)
+    })
 
 }
 
@@ -150,8 +157,13 @@ document.querySelector('#todo-form').addEventListener('submit', function(e){
 })
 
 //listen for checkbox 
-document.querySelector('#hide-completed').addEventListener('change', function(e){
-    filters.searchText = ''
-    hideCompletedItems(todoObjList, filters, e.target.checked)
+document.querySelector('#hide-complete').addEventListener('change', function(e){
+    filters.hideComplete = e.target.checked
+    if(filters.hideComplete == true ){
+        hideCompletedItems(todoObjList)
+    }
+    else{
+        renderTodo(todoObjList, filters)
+    }
 })
 
