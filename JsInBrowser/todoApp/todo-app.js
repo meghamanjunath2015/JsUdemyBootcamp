@@ -30,7 +30,8 @@ const todoObjList = [{
 
 const filters = {
     searchText:'',
-    hideComplete: false
+    hideComplete: false, 
+    flag: false
 }
 /*
 //Challenge1 - Remove all p tags that have "the" in it
@@ -114,11 +115,22 @@ const renderTodo = function(todoList, filters){
 }
 
 //Hide if completed
-const hideCompletedItems = function(todoList){
-    let list = todoList.filter(function(todo){
-        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase()) &&
-        todo.completed == false
+const hideCompletedItems = function(todoList, filters){
+    let filteredlist = todoList.filter(function(todo){
+        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
     })
+    console.log(filteredlist)
+    if(filters.flag == false){
+         list = filteredlist.filter(function(todo){
+            return todo.completed == false  
+        })
+        console.log(list)
+    } 
+    else{
+        list = todoList.filter(function(todo){
+            return todo.completed == true  
+        })
+    }
 
     console.log(list)
     document.querySelector('#todos').innerHTML = ''
@@ -128,7 +140,6 @@ const hideCompletedItems = function(todoList){
         newLine1.textContent = element.text
         document.querySelector('#todos').appendChild(newLine1)
     })
-
 }
 
 renderTodo(todoObjList, filters)
@@ -160,10 +171,19 @@ document.querySelector('#todo-form').addEventListener('submit', function(e){
 document.querySelector('#hide-complete').addEventListener('change', function(e){
     filters.hideComplete = e.target.checked
     if(filters.hideComplete == true ){
-        hideCompletedItems(todoObjList)
+        hideCompletedItems(todoObjList, filters)
     }
     else{
         renderTodo(todoObjList, filters)
     }
 })
+
+/* //Dropdown 
+document.querySelector('#filterBy').addEventListener('click',function(e){
+    console.log(e.target.value)
+    filters.flag = e.target.value
+    const list = hideCompletedItems(todoObjList, filters) 
+    console.log(list)
+    renderTodo(list, filters)
+}) */
 
