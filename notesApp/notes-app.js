@@ -16,6 +16,9 @@ const filters = {
     searchText:''
 }
 
+localStorage.setItem('location', 'California')
+console.log(localStorage.getItem('location'))
+
 const renderNotes = function(notes, filters){
     const filteredNotes = notes.filter(function(note){
         return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
@@ -48,10 +51,10 @@ ps.forEach(function(p){
 //one time to show data
 renderNotes(noteObj, filters)
 
-//Event Listeners!!
+/*//Event Listeners!!
 document.querySelector('#add-note').addEventListener('click', function(e){
     e.target.textContent = 'Button was clicked'
-})
+})*/
 
 /*document.querySelector('#remove-note').addEventListener('click', function(){
     document.querySelectorAll('.note').forEach(function(e){
@@ -70,10 +73,10 @@ document.querySelector('#search-input').addEventListener('input', function(e){
     renderNotes(noteObj, filters)
 })
 
-//listen for form 
+/*//listen for form 
 document.querySelector('#form1').addEventListener('submit', function(e){
     e.preventDefault()
     console.log(e.target.elements.firstName.value)
     e.target.elements.firstName.value = ''
-})
+})*/
 

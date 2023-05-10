@@ -1,38 +1,19 @@
 //DOM - document for HTML doc, Object is for js modal
-const todoObjList = [{
-    text: 'Order dog food',
-    completed: true
-},
-{
-    text: 'Order cat food',
-    completed: false
-}, 
-{
-    text: 'Buy food',
-    completed: false
-}, 
-{
-    text: 'Excercise',
-    completed: false
-}, 
-{
-    text: 'Garage re-paint',
-    completed: true
-}, 
-{
-    text: 'Fix backdoor',
-    completed: true
-},
-{
-    text: 'Water plants',
-    completed: false
-}]
+let todoObjList = []
 
 const filters = {
     searchText:'',
     hideComplete: false, 
     flag: false
 }
+
+//Store all todo from localstorage to todoObjList
+const todoJSON = localStorage.getItem('todos')
+
+if(todoJSON!== null){
+    todoObjList = JSON.parse(todoJSON)
+} 
+
 /*
 //Challenge1 - Remove all p tags that have "the" in it
 const ps = document.querySelectorAll('p')
@@ -112,7 +93,29 @@ const renderTodo = function(todoList, filters){
         document.querySelector('#todos').appendChild(newLine1)
         })
     }
-}
+} 
+
+/* const renderTodo = function(todoList, filters){
+    let list = []
+    if(filters.searchText !== ''){
+        list = todoList.filter(function(todo){
+            return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+        })
+    }
+    else{
+        list = todoList
+    }
+
+    //first clear the page
+    document.querySelector('#todos').innerHTML = ''
+    //show the final list 
+    list.forEach(element => {
+        const newLine1 = document.createElement('p')
+        newLine1.textContent = element.text
+        document.querySelector('#todos').appendChild(newLine1)
+        })
+} */
+
 
 //Hide if completed
 const hideCompletedItems = function(todoList, filters){
@@ -151,20 +154,25 @@ document.querySelector('#search-todo').addEventListener('input', function(e){
     renderTodo(todoObjList, filters)
 })
 
-//Listen for form 
+//Add new To do item 
 document.querySelector('#todo-form').addEventListener('submit', function(e){
     e.preventDefault()
     //add a new item to the todo's array with the text data 
     console.log(e.target.elements.todoText.value)
     let newTodo = e.target.elements.todoText.value
+    if(newTodo != ''){
     //Add it to Todo Array 
     todoObjList.push({
         text: newTodo, 
         completed: false
     })
+    //Add it to the local storage as string 
+    localStorage.setItem('todos', JSON.stringify(todoObjList))
+    console.log(localStorage.getItem('todos'))
     //clear the field value 
-    e.target.elements.todoText.value = ''
+    e.target.elements.todoText.value = ''     
     renderTodo(todoObjList,filters)
+    }
 })
 
 //listen for checkbox 
@@ -187,3 +195,9 @@ document.querySelector('#filterBy').addEventListener('click',function(e){
     renderTodo(list, filters)
 }) */
 
+//delete all notes 
+document.querySelector('#delete-all').addEventListener('click', function(){
+   localStorage.removeItem('todos')
+   localStorage.clear()
+   document.querySelector('#todos').innerHTML = ''
+})
