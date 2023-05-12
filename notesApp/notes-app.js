@@ -1,4 +1,41 @@
-const noteObj = [{
+const noteObj = getSavedNotes()
+
+
+const filters = {
+    searchText:''
+} 
+
+//one time to show data
+renderNotes(noteObj, filters)
+
+//input - dynamic 
+document.querySelector('#search-input').addEventListener('input', function(e){
+    filters.searchText = e.target.value
+    renderNotes(noteObj, filters)
+})
+
+//Add new note
+document.querySelector('#form1').addEventListener('submit', function(e){
+    e.preventDefault()
+    console.log(e.target.elements.addTitle.value)
+    console.log(e.target.elements.addDetails.value)
+    addNewNoteToArray(e)
+    //Add it to the local storage as string 
+    localStorage.setItem('notes', JSON.stringify(noteObj))
+    //Display it on the page
+    console.log(localStorage.getItem('notes'))
+    //clear the field value 
+    e.target.elements.addDetails.value = ''  
+    e.target.elements.addTitle.value = ''   
+    renderNotes(noteObj,filters)
+})
+
+//Clear all 
+document.querySelector('#clearAll').addEventListener('click', function(e){
+    clearAllNotes()
+})
+
+/*const noteObj = [{
     title: "My next trip",
     body: "I would like to go to Orlando"
 },{
@@ -10,30 +47,8 @@ const noteObj = [{
 },{
     title: "My current book",
     body: "Undefeated Brain"
-}]
+}]*/
 
-const filters = {
-    searchText:''
-}
-
-localStorage.setItem('location', 'California')
-console.log(localStorage.getItem('location'))
-
-const renderNotes = function(notes, filters){
-    const filteredNotes = notes.filter(function(note){
-        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
-    })
-    console.log(filteredNotes)
-
-    //clear everytime 
-    document.querySelector('#notes').innerHTML = ''
-
-    filteredNotes.forEach(function(note){
-        const noteEl = document.createElement('p')
-        noteEl.textContent  = note.title
-        document.querySelector('#notes').appendChild(noteEl)
-    })
-}
 /*
 //query and remove first occurance 
 const p = document.querySelector('p')
@@ -48,9 +63,6 @@ ps.forEach(function(p){
     //p.remove()
 })*/
 
-//one time to show data
-renderNotes(noteObj, filters)
-
 /*//Event Listeners!!
 document.querySelector('#add-note').addEventListener('click', function(e){
     e.target.textContent = 'Button was clicked'
@@ -62,21 +74,7 @@ document.querySelector('#add-note').addEventListener('click', function(e){
     })
 })*/
 
-//change (e.target.value)
+/*//change (e.target.value)
 document.querySelector('#search-input').addEventListener('change', function(e){
     console.log(e.target.value)
-})
-
-//input - dynamic 
-document.querySelector('#search-input').addEventListener('input', function(e){
-    filters.searchText = e.target.value
-    renderNotes(noteObj, filters)
-})
-
-/*//listen for form 
-document.querySelector('#form1').addEventListener('submit', function(e){
-    e.preventDefault()
-    console.log(e.target.elements.firstName.value)
-    e.target.elements.firstName.value = ''
 })*/
-

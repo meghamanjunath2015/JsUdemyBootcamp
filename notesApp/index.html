@@ -5,13 +5,19 @@
       </head>
       <body>
         <h1>Hello, This is note taking App!</h1>
+        <form id="form1">
+          <input type="text" placeholder="Add Title to your Note" name="addTitle">
+          <input type="text" placeholder="Add Details" name="addDetails">
+          <button id="submit-button" name="Submit">Submit</button>
+        </form>
+        <br>
         <input id="search-input" type="text" placeholder="Enter Search Criteria">
+        <br>
         <div id="notes">
         </div>
-        <!--<form id="form1">
-          <input type="text" placeholder="Add a Note" name="addNote">
-          <button id="submit-button" name="Submit">Submit</button>
-        </form>-->
+        <br>
+        <button id="clearAll" name="clearAll">Clear All</button>
+        <script src="notes-functions.js"></script>
         <script src="notes-app.js"></script>
       </body>    
 </html>
