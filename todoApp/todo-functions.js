@@ -9,12 +9,28 @@ const getSavedTodo = function(){
     }
 }
 
+// Add checkbox before the todo's
 //Create a new paragraph for each list 
 const createNewDomElement = function(list, appendToString){
     list.forEach(element => {
-        const newLine1 = document.createElement('p')
-        newLine1.textContent = element.text
-        document.querySelector(appendToString).appendChild(newLine1)
+        const todoElement = document.createElement('div')
+        const checkbox = document.createElement('input')
+        const todoText = document.createElement('span')
+        const removeBtn = document.createElement('button')
+
+        //Set up todo checkbox
+        checkbox.setAttribute('type', 'checkbox')
+        todoElement.appendChild(checkbox)
+
+        //setyp the todo Text 
+        todoText.textContent = element.text
+        todoElement.appendChild(todoText)
+
+        //setup remove button
+        removeBtn.textContent = 'x'
+        todoText.appendChild(removeBtn)
+
+        document.querySelector('#todos').appendChild(todoElement)
         })
 }
 
@@ -71,6 +87,7 @@ const addTodoItem = function(newTodo){
     if(newTodo != ''){
         //Add it to Todo Array 
         todoObjList.push({
+            id: uuidv4(),
             text: newTodo, 
             completed: false
         })

@@ -10,7 +10,7 @@ const getSavedNotes = function(){
 
 //Generate the DOM structure for new note
 const addNoteToDom = function(note){
-    const noteTitle = document.createElement('p')
+        const noteTitle = document.createElement('p')
         const noteBody = document.createElement('p')
         noteTitle.textContent  = note.title
         noteBody.textContent = note.body

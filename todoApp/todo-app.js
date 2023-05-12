@@ -9,6 +9,8 @@ const filters = {
     flag: false
 }
 
+console.log(uuidv4())
+
 //1. Setup Div for todo's
 //2. Setup filters and wire up new filter input to change it 
 //3. Create a render todo function to rerender latest filtered data
