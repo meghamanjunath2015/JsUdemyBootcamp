@@ -1,37 +1,54 @@
 //Display any existing data for todo
 const getSavedTodo = function(){
     const todoJSON = localStorage.getItem('todos')
-    if(todoJSON!== null){
-        return JSON.parse(todoJSON)
+    if(todoJSON === null || todoJSON == "undefined"){
+        return []
     } 
     else{
-        return []
+        return JSON.parse(todoJSON)
     }
 }
+
 
 // Add checkbox before the todo's
 //Create a new paragraph for each list 
 const createNewDomElement = function(list, appendToString){
-    list.forEach(element => {
-        const todoElement = document.createElement('div')
-        const checkbox = document.createElement('input')
-        const todoText = document.createElement('span')
-        const removeBtn = document.createElement('button')
+    if(list != null){
+        list.forEach(element => {
+            const todoElement = document.createElement('div')
+            const checkbox = document.createElement('input')
+            const todoText = document.createElement('span')
+            const removeBtn = document.createElement('button')
+    
+            //Set up todo checkbox
+            checkbox.setAttribute('type', 'checkbox')
+            todoElement.appendChild(checkbox)
+    
+            //setyp the todo Text 
+            todoText.textContent = element.text
+            todoElement.appendChild(todoText)
+    
+            //setup remove button
+            removeBtn.textContent = 'x'
+            todoElement.appendChild(removeBtn)
+            
+            //Event listener for remove button 
+            removeBtn.addEventListener('click', function(){
+            removeTodo(element.id)
+            localStorage.setItem('todos', JSON.stringify(todoObjList))
+            renderTodo(todoObjList, filters)
+            })
+            document.querySelector(appendToString).appendChild(todoElement)
+            })
+    }
+}
 
-        //Set up todo checkbox
-        checkbox.setAttribute('type', 'checkbox')
-        todoElement.appendChild(checkbox)
-
-        //setyp the todo Text 
-        todoText.textContent = element.text
-        todoElement.appendChild(todoText)
-
-        //setup remove button
-        removeBtn.textContent = 'x'
-        todoText.appendChild(removeBtn)
-
-        document.querySelector('#todos').appendChild(todoElement)
-        })
+//remove the todo item 
+const removeTodo = function(id){
+    const index =  todoObjList.findIndex(todo => todo.id === id)
+    if(index > -1){
+        todoObjList.splice(index, 1)
+    }
 }
 
 //render the todo list 

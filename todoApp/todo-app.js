@@ -2,6 +2,7 @@
 
 //Store all todo from localstorage to todoObj
 const todoObjList = getSavedTodo()
+console.log(todoObjList)
 
 const filters = {
     searchText:'',
@@ -9,12 +10,9 @@ const filters = {
     flag: false
 }
 
-console.log(uuidv4())
-
 //1. Setup Div for todo's
 //2. Setup filters and wire up new filter input to change it 
 //3. Create a render todo function to rerender latest filtered data
-
 renderTodo(todoObjList, filters)
 
 //Assign search text to filters object and call render todo notes
@@ -30,10 +28,12 @@ document.querySelector('#todo-form').addEventListener('submit', function(e){
     //add a new item to the todo's array with the text data 
     console.log(e.target.elements.todoText.value)
     let newTodo = e.target.elements.todoText.value
-    addTodoItem(newTodo)
-    //clear the field value 
-    e.target.elements.todoText.value = ''     
-    renderTodo(todoObjList,filters)
+    if(newTodo != ''){
+        addTodoItem(newTodo)
+        //clear the field value 
+        e.target.elements.todoText.value = ''     
+        renderTodo(todoObjList,filters)
+    }
 })
 
 //listen for checkbox 
@@ -47,12 +47,12 @@ document.querySelector('#hide-complete').addEventListener('change', function(e){
     }
 })
 
-//delete all notes 
+/*//delete all notes 
 document.querySelector('#delete-all').addEventListener('click', function(){
    localStorage.removeItem('todos')
    localStorage.clear()
    document.querySelector('#todos').innerHTML = ''
-})
+})*/
 
 /* //Dropdown 
 document.querySelector('#filterBy').addEventListener('click',function(e){
