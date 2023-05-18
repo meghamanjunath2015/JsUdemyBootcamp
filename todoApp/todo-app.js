@@ -6,8 +6,7 @@ console.log(todoObjList)
 
 const filters = {
     searchText:'',
-    hideComplete: false, 
-    flag: false
+    hideComplete: false
 }
 
 //1. Setup Div for todo's

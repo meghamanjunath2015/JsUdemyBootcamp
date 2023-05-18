@@ -23,8 +23,19 @@ const createNewDomElement = function(list, appendToString){
             //Set up todo checkbox
             checkbox.setAttribute('type', 'checkbox')
             todoElement.appendChild(checkbox)
+
+            //Event Listener for checkbox
+            checkbox.addEventListener('change', function(e){
+                markCheckbox(element.id)
+            })
+            if(element.completed == true){
+                todoText.style.textDecoration = 'line-through'
+            }
+            else{
+                todoText.style.textDecoration = 'none'
+            }
     
-            //setyp the todo Text 
+            //setup the todo Text 
             todoText.textContent = element.text
             todoElement.appendChild(todoText)
     
@@ -35,20 +46,33 @@ const createNewDomElement = function(list, appendToString){
             //Event listener for remove button 
             removeBtn.addEventListener('click', function(){
             removeTodo(element.id)
-            localStorage.setItem('todos', JSON.stringify(todoObjList))
-            renderTodo(todoObjList, filters)
             })
             document.querySelector(appendToString).appendChild(todoElement)
             })
     }
 }
 
+//mark the checkbox for todo item 
+const markCheckbox = function(id){
+    const index =  findIndex(id)
+    if(index > -1){
+        todoObjList[index].completed = true
+    }
+    localStorage.setItem('todos', JSON.stringify(todoObjList))
+}
+
+//find index method 
+const findIndex = function(id){
+    return todoObjList.findIndex(todo => todo.id === id)
+}
 //remove the todo item 
 const removeTodo = function(id){
-    const index =  todoObjList.findIndex(todo => todo.id === id)
+    const index =  findIndex(id)
     if(index > -1){
         todoObjList.splice(index, 1)
     }
+    localStorage.setItem('todos', JSON.stringify(todoObjList))
+    renderTodo(todoObjList, filters)
 }
 
 //render the todo list 
@@ -73,22 +97,16 @@ const renderTodo = function(todoList, filters){
 
 //Hide completed todo items
 const hideCompletedItems = function(todoList, filters){
+    debugger
     let filteredlist = todoList.filter(function(todo){
         return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
     })
-    console.log(filteredlist)
-    if(filters.flag == false){
+    if(filters.hideComplete == true){
          list = filteredlist.filter(function(todo){
             return todo.completed == false  
         })
         console.log(list)
     } 
-    else{
-        list = todoList.filter(function(todo){
-            return todo.completed == true  
-        })
-    }
-
     console.log(list)
     document.querySelector('#todos').innerHTML = ''
 
