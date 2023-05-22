@@ -17,13 +17,7 @@ document.querySelector('#search-input').addEventListener('input', function(e){
 //Add new note
 document.querySelector('#form1').addEventListener('submit', function(e){
     e.preventDefault()
-    console.log(e.target.elements.addTitle.value)
-    console.log(e.target.elements.addDetails.value)
     addNewNoteToArray(e)
-    //Add it to the local storage as string 
-    localStorage.setItem('notes', JSON.stringify(noteObj))
-    //Display it on the page
-    console.log(localStorage.getItem('notes'))
     //clear the field value 
     e.target.elements.addDetails.value = ''  
     e.target.elements.addTitle.value = ''   

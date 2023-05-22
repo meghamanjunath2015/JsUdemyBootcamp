@@ -10,12 +10,15 @@ const getSavedNotes = function(){
 
 //Generate the DOM structure for new note
 const addNoteToDom = function(note){
+        const noteElement = document.createElement('div')
         const noteTitle = document.createElement('p')
-        const noteBody = document.createElement('p')
+        const noteBody = document.createElement('a')
         noteTitle.textContent  = note.title
         noteBody.textContent = note.body
-        document.querySelector('#notes').appendChild(noteTitle)
-        document.querySelector('#notes').appendChild(noteBody)
+        noteElement.appendChild(noteTitle)
+        noteElement.appendChild(noteBody)
+        noteBody.setAttribute('href', 'editNote.html' + '#' + note.id)
+        document.querySelector('#notes').appendChild(noteElement)
 }
 
 //clear all notes 
@@ -32,10 +35,15 @@ const addNewNoteToArray = function(e){
     if(newTitle != '' && newBody != ''){
         //Add it to Todo Array 
         noteObj.push({
+            id: uuidv4(),
             title: `Title: ${newTitle}`, 
             body: `Body: ${newBody}`
         })
     }
+     //Add it to the local storage as string 
+     localStorage.setItem('notes', JSON.stringify(noteObj))
+     //Display it on the page
+     console.log(localStorage.getItem('notes'))
 }
 
 //Display notes to the page
@@ -53,3 +61,39 @@ const renderNotes = function(notes, filters){
         addNoteToDom(note)
     })
 }
+
+//Stripe id 
+const stripId = function(){
+    return location.hash.substring(1)
+}
+
+//get Details of a note
+const getNoteDetail = function(){
+    let index = note.body.indexOf("Body :")
+    return note.body.substring(index+6)
+}
+const getNoteTitle = function(){
+    let index = note.body.indexOf("Title :")
+    return note.title.substring(index+7)
+}
+
+//update the array
+const updateNote = function(oldNote, newTitle, newBody){
+    if(newTitle != '' && newBody != ''){
+        //remove old note
+        let noteObjList = getSavedNotes()
+        noteObjList = noteObjList.filter(e => e.id !== oldNote.id)
+        //push new note
+        noteObjList.push({
+            id: uuidv4(),
+            title: newTitle, 
+            body: newBody
+        })
+    }
+     //Add it to the local storage as string 
+     localStorage.setItem('notes', JSON.stringify(noteObjList))
+     //Display it on the page
+     console.log(localStorage.getItem('notes'))
+}
+
+
