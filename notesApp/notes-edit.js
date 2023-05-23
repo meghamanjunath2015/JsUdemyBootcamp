@@ -17,9 +17,7 @@ document.querySelector('#notes-edit-form').addEventListener('submit', function(e
     e.preventDefault()
     getPreviousTitle = e.target.editTitle.value
     getPreviousBody = e.target.editBody.value
-    updateNote(e, getPreviousTitle, getPreviousBody)
-    saveNotes()
-    console.log(localStorage.getItem('notes'))
+    updateNote(note, getPreviousTitle, getPreviousBody)
     //redirection 
     location.assign('index.html')
 })

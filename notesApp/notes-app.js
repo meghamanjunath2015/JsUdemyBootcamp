@@ -1,6 +1,5 @@
 const noteObj = getSavedNotes()
 
-
 const filters = {
     searchText:''
 } 

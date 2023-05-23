@@ -89,11 +89,11 @@ const updateNote = function(oldNote, newTitle, newBody){
             title: newTitle, 
             body: newBody
         })
-    }
-     //Add it to the local storage as string 
+    //Add it to the local storage as string 
      localStorage.setItem('notes', JSON.stringify(noteObjList))
      //Display it on the page
      console.log(localStorage.getItem('notes'))
+    }
 }
 
 
