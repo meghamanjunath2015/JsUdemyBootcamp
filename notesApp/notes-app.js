@@ -1,7 +1,8 @@
 const noteObj = getSavedNotes()
 
 const filters = {
-    searchText:''
+    searchText:'', 
+    sortBy:''
 } 
 
 //one time to show data
@@ -27,6 +28,31 @@ document.querySelector('#form1').addEventListener('submit', function(e){
 document.querySelector('#clearAll').addEventListener('click', function(e){
     clearAllNotes()
 })
+
+//sort function 
+document.querySelector('#sort-by').addEventListener('change', function(e){
+    filters.sortBy = e.target.value
+    if(filters.sortBy == 'byEdited'){
+
+    }
+    else if(filters.sortBy == 'byCreated'){
+
+    }
+    else{
+        let list = renderNotes(noteObj,filters)
+        list.sort()
+    }
+})
+
+/*
+//Date challenge
+const now = new Date()
+const timestamp = now.getTime()
+console.log(timestamp)
+
+const myDate = new Date(timestamp)
+console.log(myDate.getFullYear())
+*/
 
 /*const noteObj = [{
     title: "My next trip",

@@ -8,10 +8,13 @@
         <br>
         <br>
         <form id="notes-edit-form">
+            <span id="last-edited">
+            </span>
+            <br>
+            <br>
             <label>
                 Title: <textarea id="edit-title" placeholder="Edit your Title" name="editTitle"></textarea>
             </label>
-            <br>
             <br>
             <label>
                 Body: <textarea id="edit-body" placeholder="Edit your notes" name="editBody"></textarea>
@@ -20,6 +23,7 @@
             <br>
             <button id="submit-button" name="Submit">Save</button>
         </form>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js" integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="/uuidv4.js"></script>
         <script src="notes-functions.js"></script>
         <script src="notes-edit.js"></script>

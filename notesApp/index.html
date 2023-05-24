@@ -12,11 +12,17 @@
         </form>
         <br>
         <input id="search-input" type="text" placeholder="Enter Search Criteria">
+        <select id="sort-by">
+          <option value="byEdited">Sory By Last Edited</option>
+          <option value="byCreated">Sory By Created</option>
+          <option value="alphabetical">Sory By Alphabetical</option>
+        </select>
         <br>
         <div id="notes">
         </div>
         <br>
         <button id="clearAll" name="clearAll">Clear All</button>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js" integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="/uuidv4.js"></script>
         <script src="notes-functions.js"></script>
         <script src="notes-app.js"></script>
