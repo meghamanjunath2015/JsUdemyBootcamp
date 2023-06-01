@@ -32,16 +32,7 @@ document.querySelector('#clearAll').addEventListener('click', function(e){
 //sort function 
 document.querySelector('#sort-by').addEventListener('change', function(e){
     filters.sortBy = e.target.value
-    if(filters.sortBy == 'byEdited'){
-
-    }
-    else if(filters.sortBy == 'byCreated'){
-
-    }
-    else{
-        let list = renderNotes(noteObj,filters)
-        list.sort()
-    }
+    renderNotes(noteObj, filters)
 })
 
 /*

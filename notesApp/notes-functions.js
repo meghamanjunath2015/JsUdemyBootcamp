@@ -70,7 +70,8 @@ const addNewNoteToArray = function(e){
 
 //Display notes to the page
 const renderNotes = function(notes, filters){
-    const filteredNotes = notes.filter(function(note){
+    let sortedNotes = sortNotes(notes)
+    const filteredNotes = sortedNotes.filter(function(note){
         return note.title.toLowerCase().includes(filters.searchText.toLowerCase()) ||
         note.body.toLowerCase().includes(filters.searchText.toLowerCase())
     })
@@ -114,6 +115,46 @@ const updateNote = function(oldNote, newTitle, newBody){
 //generate last edited
 const generateLastEdited = function(timestamp){
     return `Last Edited: ${moment(timestamp).fromNow()}`
+}
+
+//Sort Notes 
+const sortNotes = function(notes){
+    if(filters.sortBy == 'byEdited'){
+        return notes.sort(function(a,b){
+            if(a.updatedAt > b.updateAt){
+                return -1
+            } else if(a.updatedAt < b.updateAt){
+                return 1
+            } else {
+                return 0
+            }
+        })
+    }
+    else if(filters.sortBy == 'byCreated'){
+        return notes.sort(function(a,b){
+            if(a.createdAt > b.createdAt){
+                return 1
+            } else if(a.createdAt < b.createdAt){
+                return -1
+            } else {
+                return 0
+            }
+        })
+    }
+    else if(filters.sortBy == 'alphabetical'){
+        return notes.sort(function(a,b){
+            if(a.title.toLowerCase() > b.title.toLowerCase()){
+                return 1
+            } else if(a.title.toLowerCase() < b.title.toLowerCase()){
+                return -1
+            } else {
+                return 0
+            }
+        })
+    }
+    else{
+        return notes
+    }
 }
 
 
