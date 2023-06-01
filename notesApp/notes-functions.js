@@ -121,9 +121,9 @@ const generateLastEdited = function(timestamp){
 const sortNotes = function(notes){
     if(filters.sortBy == 'byEdited'){
         return notes.sort(function(a,b){
-            if(a.updatedAt > b.updateAt){
+            if(a.updatedAt > b.updatedAt){
                 return -1
-            } else if(a.updatedAt < b.updateAt){
+            } else if(a.updatedAt < b.updatedAt){
                 return 1
             } else {
                 return 0
