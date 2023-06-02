@@ -71,7 +71,7 @@ const addNewNoteToArray =(e) => {
 //Display notes to the page
 const renderNotes = (notes, filters) => {
     let sortedNotes = sortNotes(notes)
-    const filteredNotes = sortedNotes.filter(function(note){
+    const filteredNotes = sortedNotes.filter((note) =>{
         return note.title.toLowerCase().includes(filters.searchText.toLowerCase()) ||
         note.body.toLowerCase().includes(filters.searchText.toLowerCase())
     })
@@ -80,7 +80,7 @@ const renderNotes = (notes, filters) => {
     //clear everytime 
     document.querySelector('#notes').innerHTML = ''
 
-    filteredNotes.forEach(function(note){
+    filteredNotes.forEach((note)=>{
         addNoteToDom(note)
     })
 }
@@ -117,7 +117,7 @@ const generateLastEdited = (timestamp) =>  `Last Edited: ${moment(timestamp).fro
 //Sort Notes 
 const sortNotes = (notes) => {
     if(filters.sortBy == 'byEdited'){
-        return notes.sort(function(a,b){
+        return notes.sort((a,b) => {
             if(a.updatedAt > b.updatedAt){
                 return -1
             } else if(a.updatedAt < b.updatedAt){
@@ -128,7 +128,7 @@ const sortNotes = (notes) => {
         })
     }
     else if(filters.sortBy == 'byCreated'){
-        return notes.sort(function(a,b){
+        return notes.sort((a,b) => {
             if(a.createdAt > b.createdAt){
                 return 1
             } else if(a.createdAt < b.createdAt){
@@ -139,7 +139,7 @@ const sortNotes = (notes) => {
         })
     }
     else if(filters.sortBy == 'alphabetical'){
-        return notes.sort(function(a,b){
+        return notes.sort((a,b) => {
             if(a.title.toLowerCase() > b.title.toLowerCase()){
                 return 1
             } else if(a.title.toLowerCase() < b.title.toLowerCase()){

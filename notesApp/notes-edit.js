@@ -16,7 +16,7 @@ document.querySelector('#edit-body').value = getPreviousBody
 
 
 //Add new note
-document.querySelector('#notes-edit-form').addEventListener('submit', function(e){
+document.querySelector('#notes-edit-form').addEventListener('submit', (e) => {
     e.preventDefault()
     getPreviousTitle = e.target.editTitle.value
     getPreviousBody = e.target.editBody.value
