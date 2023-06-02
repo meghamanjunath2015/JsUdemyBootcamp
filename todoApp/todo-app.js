@@ -15,14 +15,14 @@ const filters = {
 renderTodo(todoObjList, filters)
 
 //Assign search text to filters object and call render todo notes
-document.querySelector('#search-todo').addEventListener('input', function(e){
+document.querySelector('#search-todo').addEventListener('input', (e) => {
     console.log(e.target.value)
     filters.searchText = e.target.value
     renderTodo(todoObjList, filters)
 })
 
 //Add new To do item 
-document.querySelector('#todo-form').addEventListener('submit', function(e){
+document.querySelector('#todo-form').addEventListener('submit', (e) => {
     e.preventDefault()
     //add a new item to the todo's array with the text data 
     console.log(e.target.elements.todoText.value)
@@ -36,7 +36,7 @@ document.querySelector('#todo-form').addEventListener('submit', function(e){
 })
 
 //listen for checkbox 
-document.querySelector('#hide-complete').addEventListener('change', function(e){
+document.querySelector('#hide-complete').addEventListener('change', (e) => {
     filters.hideComplete = e.target.checked
     if(filters.hideComplete == true ){
         hideCompletedItems(todoObjList, filters)

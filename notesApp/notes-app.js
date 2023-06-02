@@ -9,13 +9,13 @@ const filters = {
 renderNotes(noteObj, filters)
 
 //input - dynamic 
-document.querySelector('#search-input').addEventListener('input', function(e){
+document.querySelector('#search-input').addEventListener('input', (e) => {
     filters.searchText = e.target.value
     renderNotes(noteObj, filters)
 })
 
 //Add new note
-document.querySelector('#form1').addEventListener('submit', function(e){
+document.querySelector('#form1').addEventListener('submit', (e) => {
     e.preventDefault()
     addNewNoteToArray(e)
     //clear the field value 
@@ -25,12 +25,12 @@ document.querySelector('#form1').addEventListener('submit', function(e){
 })
 
 //Clear all 
-document.querySelector('#clearAll').addEventListener('click', function(e){
+document.querySelector('#clearAll').addEventListener('click', () => {
     clearAllNotes()
 })
 
 //sort function 
-document.querySelector('#sort-by').addEventListener('change', function(e){
+document.querySelector('#sort-by').addEventListener('change', (e) => {
     filters.sortBy = e.target.value
     renderNotes(noteObj, filters)
 })

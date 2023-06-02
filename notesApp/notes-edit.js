@@ -2,9 +2,7 @@
 const getNoteid = stripId()
 console.log(getNoteid)
 const noteList = getSavedNotes()
-const note = noteList.find(function(note){
-    return note.id === getNoteid
-})
+const note = noteList.find((note) => note.id === getNoteid)
 
 //show the existing body and title
 let getPreviousBody = note.body

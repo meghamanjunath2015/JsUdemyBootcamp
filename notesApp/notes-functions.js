@@ -1,5 +1,5 @@
 //Read existing notes from local storage
-const getSavedNotes = function(){
+const getSavedNotes = () => {
     const notesJSON = localStorage.getItem('notes')
     if(notesJSON !== null){
         return JSON.parse(notesJSON)
@@ -9,7 +9,7 @@ const getSavedNotes = function(){
 }
 
 //Generate the DOM structure for new note
-const addNoteToDom = function(note){
+const addNoteToDom = (note) => {
         const noteElement = document.createElement('div')
         const noteTitle = document.createElement('a')
         const noteBody = document.createElement('a')
@@ -39,14 +39,14 @@ const addNoteToDom = function(note){
 }
 
 //clear all notes 
-const clearAllNotes = function(){
+const clearAllNotes = () => {
     document.querySelector('#notes').innerHTML = ''
     localStorage.removeItem('notes')
     localStorage.clear()
 }
 
 //Add new note to Array 
-const addNewNoteToArray = function(e){
+const addNewNoteToArray =(e) => {
     const newTitle = e.target.elements.addTitle.value
     const newBody = e.target.elements.addDetails.value
     //to get timestamp 
@@ -69,7 +69,7 @@ const addNewNoteToArray = function(e){
 }
 
 //Display notes to the page
-const renderNotes = function(notes, filters){
+const renderNotes = (notes, filters) => {
     let sortedNotes = sortNotes(notes)
     const filteredNotes = sortedNotes.filter(function(note){
         return note.title.toLowerCase().includes(filters.searchText.toLowerCase()) ||
@@ -86,12 +86,11 @@ const renderNotes = function(notes, filters){
 }
 
 //Stripe id 
-const stripId = function(){
-    return location.hash.substring(1)
-}
+const stripId = () => location.hash.substring(1)
+
 
 //update the array
-const updateNote = function(oldNote, newTitle, newBody){
+const updateNote = (oldNote, newTitle, newBody) => {
     const timestamp = moment().valueOf()
     if(newTitle != '' && newBody != ''){
         //remove old note
@@ -113,12 +112,10 @@ const updateNote = function(oldNote, newTitle, newBody){
 }
 
 //generate last edited
-const generateLastEdited = function(timestamp){
-    return `Last Edited: ${moment(timestamp).fromNow()}`
-}
+const generateLastEdited = (timestamp) =>  `Last Edited: ${moment(timestamp).fromNow()}`
 
 //Sort Notes 
-const sortNotes = function(notes){
+const sortNotes = (notes) => {
     if(filters.sortBy == 'byEdited'){
         return notes.sort(function(a,b){
             if(a.updatedAt > b.updatedAt){

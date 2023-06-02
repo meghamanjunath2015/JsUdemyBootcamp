@@ -1,5 +1,5 @@
 //Display any existing data for todo
-const getSavedTodo = function(){
+const getSavedTodo = () => {
     const todoJSON = localStorage.getItem('todos')
     if(todoJSON === null || todoJSON == "undefined"){
         return []
@@ -12,7 +12,7 @@ const getSavedTodo = function(){
 
 // Add checkbox before the todo's
 //Create a new paragraph for each list 
-const createNewDomElement = function(list, appendToString){
+const createNewDomElement = (list, appendToString) => {
     if(list != null){
         list.forEach(element => {
             const todoElement = document.createElement('div')
@@ -53,7 +53,7 @@ const createNewDomElement = function(list, appendToString){
 }
 
 //mark the checkbox for todo item 
-const markCheckbox = function(id){
+const markCheckbox = (id) => {
     const index =  findIndex(id)
     if(index > -1){
         todoObjList[index].completed = true
@@ -62,11 +62,10 @@ const markCheckbox = function(id){
 }
 
 //find index method 
-const findIndex = function(id){
-    return todoObjList.findIndex(todo => todo.id === id)
-}
+const findIndex = (id) => todoObjList.findIndex(todo => todo.id === id)
 //remove the todo item 
-const removeTodo = function(id){
+
+const removeTodo = (id)=> {
     const index =  findIndex(id)
     if(index > -1){
         todoObjList.splice(index, 1)
@@ -76,11 +75,9 @@ const removeTodo = function(id){
 }
 
 //render the todo list 
-const renderTodo = function(todoList, filters){
+const renderTodo = (todoList, filters)=> {
     if(filters.searchText !== ''){
-    const list = todoList.filter(function(todo){
-        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
-    })
+    const list = todoList.filter((todo) => todo.text.toLowerCase().includes(filters.searchText.toLowerCase()))
     //Print how many items are left to complete 
     const newTodoH2 = document.createElement('p')
     newTodoH2.textContent = `You have ${list.length} items that matches your search`
@@ -96,11 +93,8 @@ const renderTodo = function(todoList, filters){
 } 
 
 //Hide completed todo items
-const hideCompletedItems = function(todoList, filters){
-    debugger
-    let filteredlist = todoList.filter(function(todo){
-        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
-    })
+const hideCompletedItems = (todoList, filters) => {
+    let filteredlist = todoList.filter((todo) => todo.text.toLowerCase().includes(filters.searchText.toLowerCase()))
     if(filters.hideComplete == true){
          list = filteredlist.filter(function(todo){
             return todo.completed == false  
@@ -118,7 +112,7 @@ const hideCompletedItems = function(todoList, filters){
 }
  
 //Take in the new todo item from Submit button and store it in localStorage
-const addTodoItem = function(newTodo){
+const addTodoItem = (newTodo) => {
     if(newTodo != ''){
         //Add it to Todo Array 
         todoObjList.push({
