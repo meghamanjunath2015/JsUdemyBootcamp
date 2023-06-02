@@ -1,14 +1,14 @@
 //Display any existing data for todo
 const getSavedTodo = () => {
     const todoJSON = localStorage.getItem('todos')
-    return (todoJSON === null || todoJSON == "undefined") ? [] : JSON.parse(todoJSON)
+    return (!todoJSON) ? [] : JSON.parse(todoJSON)
 }
 
 
 // Add checkbox before the todo's
 //Create a new paragraph for each list 
 const createNewDomElement = (list, appendToString) => {
-    if(list != null){
+    if(list){
         list.forEach(element => {
             const todoElement = document.createElement('div')
             const checkbox = document.createElement('input')
@@ -71,7 +71,7 @@ const removeTodo = (id)=> {
 
 //render the todo list 
 const renderTodo = (todoList, filters)=> {
-    if(filters.searchText !== ''){
+    if(filters.searchText){
     const list = todoList.filter((todo) => todo.text.toLowerCase().includes(filters.searchText.toLowerCase()))
     //Print how many items are left to complete 
     const newTodoH2 = document.createElement('p')
@@ -108,7 +108,7 @@ const hideCompletedItems = (todoList, filters) => {
  
 //Take in the new todo item from Submit button and store it in localStorage
 const addTodoItem = (newTodo) => {
-    if(newTodo != ''){
+    if(newTodo){
         //Add it to Todo Array 
         todoObjList.push({
             id: uuidv4(),

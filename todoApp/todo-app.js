@@ -27,7 +27,7 @@ document.querySelector('#todo-form').addEventListener('submit', (e) => {
     //add a new item to the todo's array with the text data 
     console.log(e.target.elements.todoText.value)
     let newTodo = e.target.elements.todoText.value
-    if(newTodo != ''){
+    if(newTodo){
         addTodoItem(newTodo)
         //clear the field value 
         e.target.elements.todoText.value = ''     
@@ -38,8 +38,7 @@ document.querySelector('#todo-form').addEventListener('submit', (e) => {
 //listen for checkbox 
 document.querySelector('#hide-complete').addEventListener('change', (e) => {
     filters.hideComplete = e.target.checked
-    (filters.hideComplete == true ) ? hideCompletedItems(todoObjList, filters) : renderTodo(todoObjList, filters)
-
+    return (filters.hideComplete == true ) ? hideCompletedItems(todoObjList, filters): renderTodo(todoObjList, filters)
 })
 
 /*//delete all notes 
