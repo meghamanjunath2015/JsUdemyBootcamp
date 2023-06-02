@@ -38,12 +38,8 @@ document.querySelector('#todo-form').addEventListener('submit', (e) => {
 //listen for checkbox 
 document.querySelector('#hide-complete').addEventListener('change', (e) => {
     filters.hideComplete = e.target.checked
-    if(filters.hideComplete == true ){
-        hideCompletedItems(todoObjList, filters)
-    }
-    else{
-        renderTodo(todoObjList, filters)
-    }
+    (filters.hideComplete == true ) ? hideCompletedItems(todoObjList, filters) : renderTodo(todoObjList, filters)
+
 })
 
 /*//delete all notes 
