@@ -1,3 +1,5 @@
+'use strict'
+
 //get the note
 const getNoteid = stripId()
 console.log(getNoteid)

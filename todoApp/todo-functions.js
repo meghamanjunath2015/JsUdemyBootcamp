@@ -1,7 +1,11 @@
 //Display any existing data for todo
 const getSavedTodo = () => {
     const todoJSON = localStorage.getItem('todos')
-    return (!todoJSON) ? [] : JSON.parse(todoJSON)
+    try{
+        return (!todoJSON) ? [] : JSON.parse(todoJSON)
+    } catch(e){
+        return []
+    }
 }
 
 
