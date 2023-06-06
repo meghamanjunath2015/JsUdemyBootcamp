@@ -1,3 +1,6 @@
+//Prototypes offer more flexibility and dynamic behavior compared to classes. With prototypes, 
+//you can modify objects and their behavior at runtime, add or remove properties and methods dynamically, and create more flexible and adaptable code structures.
+
 const person1 = function(){
     console.log(this)
 }
@@ -27,9 +30,8 @@ Person2.prototype.setName =function(fullName){
     this.lastName = names[1]
 }
 
-
 const me2 = new Person2('Johnson', 'Mead', 22, ['hikes', 'bikes', 'spikes'])
 me2.setName('Alexa Thompson')
 console.log(me2.getBio())
-const person2 = new Person2('Peter', 'Turner', 43, [])
-console.log(person2.lastName)
+const me3 = new Person2('Peter', 'Turner', 43, [])
+console.log(me3.lastName)
