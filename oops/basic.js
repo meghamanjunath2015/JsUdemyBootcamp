@@ -8,6 +8,11 @@
 //NEW - creates a new empty object 
 
 //The this keyword refers to different objects depending on how it is used
+/*
+Imagine you are playing with your toys. When someone asks you to do something with your toys, 
+you know they are talking about the toys you are currently playing with. 
+In JavaScript, the "this" keyword is like that. It helps you understand which object or thing you are currently working with.
+*/
 //ex: inside the object method -> refers to the object - below
 const person = {
     firstName: "John",
