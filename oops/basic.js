@@ -44,3 +44,29 @@ var runner = { name: 'John', myFavoriteActivity: 'running' };
 //MyObject.prototype.doStuff.call(runner, runner.myFavoriteActivity); // prints 'John is running!';
 
 //-------------------------------------------------------------------------------------------------
+
+//primitve values  - is a value that does not have properties and is non-object - string, num, boolean, null and undefined 
+//non-primitive values - objects, functions and arrays
+
+//prototype chain : myObject -> object.prototype -> null
+
+//prototype chain : myArray --> Array.prototype (has access to shared properties like filter, sort etc) --> __[proto]__ (hasOwnProperty) --> null 
+// array is a customized version of object 
+const myArray = ['1','2','3'] //literal syntax
+console.log(myArray)
+const team = new Array(['1','2','3']) // constructor function available 
+console.log(team)
+
+//prototype chain : myFun -> Function.prototype --> object.prototype --> null
+const getScore = () => {
+  console.log(getScore)
+}
+
+//Object wrapper gives functionality for string, num and boolean -> converts it into object 
+//String chain : string -> string.prototype -> object.prototype --> null
+const product = 'Computer'
+console.log(product)
+const otherProduct = new String('Computer')
+console.log(otherProduct)
+
+//same for num and boolean 
