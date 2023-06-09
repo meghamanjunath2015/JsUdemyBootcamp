@@ -26,7 +26,7 @@ const person = {
 
 // ex: using this alone - refers to global object , Because this is running in the global scope.
 let x = this;
-document.getElementById("demo").innerHTML = x;
+//document.getElementById("demo").innerHTML = x;
 //output - [object Window]
 // - In a browser window the global object is [object Window]
 
