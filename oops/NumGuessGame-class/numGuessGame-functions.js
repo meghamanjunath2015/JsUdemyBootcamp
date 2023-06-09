@@ -1,55 +1,62 @@
 'use strict'
-//choose a secret number 
-const chosenSecretNum = Math.floor(Math.random()*10)+1
-//game variables 
-let guessedNumbers = []
-let guessCount = 3
-let isWon = false 
-
-//call display 
-const displayStar = function(){
-    let num = inputDisplay.value.trim()
-    if(chosenSecretNum !== num && num === '' || isWon === true){
-        displayNum.textContent = '--*--'
+class NumberGussesingGame {
+    constructor(){
+        //choose a secret number 
+        this.chosenSecretNum = Math.floor(Math.random()*10)+1
+        //game variables 
+        this.guessCount = 3
+        this.isWon = false 
     }
-}
-//show guessess left 
-const showGuessesLeft = function() {
-    remainingGuessesDisplay.textContent = `You have ${guessCount} guesses remaining`
-}
+    //call display 
+    displayStar(){
+        let value = inputDisplay.value.trim()
+        if(this.chosenSecretNum !== value && value === '' || this.isWon === true){
+            displayNum.textContent = '--*--'
+        }
+    }
+    //show guessess left 
+    showGuessesLeft(){
+        remainingGuessesDisplay.textContent = `You have ${this.guessCount} guesses remaining`
+    }
 
-//disable input 
-const disableInput = function(){
+    //disable input 
+    disableInput(){
     inputDisplay.disabled = true 
     submitBtn.disabled = true
-}
-const numGuessGame = function(num) {
-    displayStar()
-    inputDisplay.value = ''
-    if(guessCount >= 1){
-        guessCount--;
-        if(num >= 1 && num <= 10){
-            showGuessesLeft()
-            if(num < chosenSecretNum){
-                showHint.textContent = 'Your guess is less than the magician\'s secret number!'
-                return
-            }
-            else if (num > chosenSecretNum){
-                showHint.textContent = 'Your guess is more than the magician\'s secret number!'
-                return
+    }
+
+    //game 
+    numGuessGame(num) {
+        this.displayStar()
+        inputDisplay.value = ''
+        if(this.guessCount >= 1){
+            this.guessCount--;
+            if(num >= 1 && num <= 10){
+                this.showGuessesLeft()
+                if(num < this.chosenSecretNum){
+                    showHint.textContent = 'Your guess is less than the magician\'s secret number!'
+                    return
+                }
+                else if (num > this.chosenSecretNum){
+                    showHint.textContent = 'Your guess is more than the magician\'s secret number!'
+                    return
+                }
+                else{
+                    alert(`Congrats! :) You guessed the magician's secret number is ${this.chosenSecretNum}`)
+                    this.isWon = true
+                    this.disableInput()
+                    return
+                }
             }
             else{
-                alert(`Congrats! :) You guessed the magician's secret number is ${chosenSecretNum}`)
-                isWon = true
-                disableInput()
+                alert('Please enter valid number! Try Again')
                 return
             }
         }
-        else{
-            alert('Please enter valid number! Try Again')
-            return
-        }
+        this.disableInput()
+        alert('Sorry, you exhaused all the tries!')
     }
-    disableInput()
-    alert('Sorry, you exhaused all the tries!')
 }
+
+
+

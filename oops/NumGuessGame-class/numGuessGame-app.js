@@ -6,13 +6,14 @@ const submitBtn = document.getElementById('submit')
 const showHint = document.getElementById('show-hint')
 
 //initialize the game 
-displayStar()
+const game = new NumberGussesingGame()
+game.displayStar()
 //Show remaining guesses left
-showGuessesLeft()
+game.showGuessesLeft()
 
 //event listener 
 submitBtn.addEventListener('click', function() { 
     const num = inputDisplay.value.trim()
     //call the game 
-    numGuessGame(num)
+    game.numGuessGame(num)
 })
