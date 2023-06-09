@@ -77,6 +77,12 @@
         let newGrade = this.calculateGrade()
         return `Your new Score is ${this.studentScore} and your new grade is ${newGrade}`
     }
+
+    getBio(){
+        const getGrade = this.calculateGrade()
+        const finalValue = (getGrade == 'A' || getGrade == 'B'|| getGrade == 'C') ? 'passed' : 'failed'
+        return `${this.firstName} ${this.lastName} has ${finalValue}`
+    }
  }
 
  const person1 = new Person('Andrew', 'Thompson', 53, ['Hikes','Bikes','spikes'])
@@ -91,3 +97,4 @@
  const student1 = new Student('Peter', 'Parker', 23, ['Hikes','Bikes','spikes'], 60, 100)
  console.log(student1.calculateGrade())
  console.log(student1.updateGrade(15))
+ console.log(student1.getBio())
