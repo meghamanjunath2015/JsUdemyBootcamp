@@ -7,7 +7,6 @@
 //this - “This” keyword refers to an object that is executing the current piece of code. 
 //NEW - creates a new empty object 
 
-//The this keyword refers to different objects depending on how it is used
 /*
 Imagine you are playing with your toys. When someone asks you to do something with your toys, 
 you know they are talking about the toys you are currently playing with. 
@@ -75,3 +74,12 @@ const otherProduct = new String('Computer')
 console.log(otherProduct)
 
 //same for num and boolean 
+
+//Types of inheritance: 
+/*
+Prototypal 
+Constructor 
+Classes
+Object composition 
+Mixian and Traits
+*/
