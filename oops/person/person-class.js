@@ -1,3 +1,5 @@
+ //class with setters and getters
+ 
  class Person {
     constructor(firstName,  lastName, age, likes=[]){
         this.firstName = firstName
@@ -14,10 +16,14 @@
     return bio
     }
 
-    setName(fullName){
+    set fullName(fullName){
     const names = fullName.split(' ')
     this.firstName = names[0]
     this.lastName = names[1]
+    }
+
+    get fullName(){
+        return `${this.firstName} ${this.lastName}`
     }
  }
 
@@ -86,13 +92,14 @@
  }
 
  const person1 = new Person('Andrew', 'Thompson', 53, ['Hikes','Bikes','spikes'])
+ person1.fullName = 'Raid Thompson'
  console.log(person1.getBio())
- person1.setName('Raid Thompson')
+ console.log(person1.fullName)
 
  const me = new Employee('Andrew', 'Thompson', 58, ['Hikes','Bikes','spikes'], 'Manager')
  console.log(me.getBio())
  console.log(me.getYearsLeft())
- me.setName('Raid Pearson')
+ me.fullName = 'Raid Pearson'
 
  const student1 = new Student('Peter', 'Parker', 23, ['Hikes','Bikes','spikes'], 60, 100)
  console.log(student1.calculateGrade())
