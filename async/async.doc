@@ -1,0 +1,3 @@
+Syncronus excution : when code is executed sequentially one at a time , program waits for the operation to finish before it proceeds to next one 
+Asyncronus exection : when code is executed, initiated and run independently, allows program to continue executing other piece of code without finishing previous line
+
