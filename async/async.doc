@@ -1,3 +1,70 @@
 Syncronus excution : when code is executed sequentially one at a time , program waits for the operation to finish before it proceeds to next one 
 Asyncronus exection : when code is executed, initiated and run independently, allows program to continue executing other piece of code without finishing previous line
 
+//Closures 
+a closure is created when an inner function references variables or functions from its outer scope, and the inner function is returned or passed 
+as a reference to another part of the code. The inner function "closes over" the variables it references, forming a closure.
+
+function outerFunction() {
+  const outerVariable = 'Hello';
+
+  function innerFunction() {
+    console.log(outerVariable); // Accessing outerVariable from the outer scope
+  }
+
+  return innerFunction; // Returning the inner function
+}
+
+const closure = outerFunction(); // The outer function is called, and inner function is returned
+
+closure(); // The inner function is invoked, and it logs 'Hello' from the outer scope
+
+// Lexical Environment 
+Each time a function is invoked or a block is entered, a new lexical environment is created. 
+This environment keeps track of the variables and functions available within that scope, as well as the reference to the outer environment.
+
+//Benefits? 
+Encapsulation and Data Privacy:
+Closures allow you to create private variables and functions within an outer function. The inner function, which has access to the variables and functions of its outer function, 
+forms a closure. This enables you to encapsulate data and functionality, hiding implementation details and preventing direct access from outside the closure.
+It helps in maintaining data integrity and reduces the chances of unintended modification or interference.
+
+Data Persistence:
+"Closures retain access to the variables and functions of their outer scope, even after the outer function has finished executing." 
+This means that the data within the closure persists, allowing you to store and access data even when the original context is no longer available. 
+Closures can be used to create data persistence patterns such as memoization, caching, or maintaining state across multiple function calls.
+
+Function Factories:
+Closures enable the creation of function factories, where you can generate multiple functions with similar behavior but with different data or configurations. 
+By returning an inner function from an outer function, you can create specialized functions that retain access to the context and variables of their parent function. 
+This can be useful for generating event handlers, callbacks, or other dynamically generated functions.
+
+Asynchronous Operations:
+Closures are commonly used in asynchronous JavaScript to maintain the context and data needed for callbacks or event handling. Since closures capture the surrounding state, 
+they can be passed as callbacks to asynchronous functions and still have access to the data they need when the callback is invoked. This helps in managing data dependencies 
+and avoiding global variables.
+
+Memory Efficiency:
+Closures in JavaScript have a garbage collection mechanism that automatically frees up memory when the closure is no longer referenced or in use. 
+This helps in efficient memory management, as only the necessary data is retained in memory.
+
+//function factories? 
+function createMultiplier(factor) {
+  return function(number) {
+    return number * factor;
+  };
+}
+
+const double = createMultiplier(2);
+console.log(double(5)); // Output: 10
+console.log(double(6)); // Output: 12
+set factor= 2 (expose only one variable), now pass in different number ex: 5/6
+
+const triple = createMultiplier(3);
+console.log(triple(5)); // Output: 15
+
+Function factories are commonly used when you need to create similar functions that differ only in a few parameters or settings. Instead of writing separate functions for each variation, 
+you can use a function factory to generate these functions dynamically.
+
+Function factories can be used in various scenarios, such as generating event handlers, creating custom filtering or mapping functions, implementing plugins or extensions, and more. 
+They provide a powerful way to dynamically generate specialized functions to suit your specific needs.
