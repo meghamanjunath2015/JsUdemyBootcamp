@@ -10,13 +10,19 @@ getDataCallback((error, data)=> {
 })
 
 //promise 
-const myPromise = new Promise((resolve, reject) => {
-    //all http functions ex: set timeout 
-    setTimeout(()=> {
-        resolve('This is the data from promise')
-    }, 2000)
-})
+const getDataPromise = () => {
+    return  new Promise((resolve, reject) => {
+        //all http functions ex: set timeout 
+        setTimeout(()=> {
+            //resolve('This is the data from promise')
+            reject('This is the error from promise')
+        }, 2000)
+    })
+}
+
 
 myPromise.then((data) => {
     console.log(data)
+}, (err) => {
+    console.log(err)
 })
