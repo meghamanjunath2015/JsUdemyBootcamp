@@ -2,12 +2,12 @@
 const Hangman = function() {
 
 //add promise 
-getRandomWords('2').then((puzzle) => {
-    console.log(puzzle)
+this.choseSecretWord = getRandomWords('2').then((puzzle) => {
+    return puzzle
 }, (err) => {
     console.log(`${err}`)
 })
-this.choseSecretWord = puzzle
+
 console.log(this.choseSecretWord)
 /*//list of secret words in an Array 
 this.wordArray = ["Horse", "Hyena", "Koala","Camel","Bison"]
