@@ -33,16 +33,16 @@ const getRandomWords = (wordCount) => new Promise((resolve, reject) => {
 
 })
 
-const getRandomWordsWithFetch = () => {
-    fetch('https://puzzle.mead.io/puzzle', {}).then( (response) => {
+const getRandomWordsWithFetch = (wordCount) => {
+    return fetch(`https://puzzle.mead.io/puzzle?wordCount=${wordCount}`, {}).then( (response) => {
     if(response.status === 200) {
         //promise
-        response.json().then(()=>{
-            
-        })
+         return response.json()
     }else {
         throw new Error('Unable to fetch puzzle')
     }
+    }).then((data)=>{
+            return data.puzzle
     }).catch((error) => {
         console.log(error)
     })

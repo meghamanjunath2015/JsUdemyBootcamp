@@ -33,7 +33,18 @@ const getCountryNameASync = (callback) => {
     request.open('GET', 'https://restcountries.com/v3.1/all')
     request.send()
 }
-
+const getCountryWithFetch = (countryCode) => {
+    return fetch('https://restcountries.com/v3.1/all', {}).then( (response) => {
+    if(response.status === 200) {
+        //promise
+         return response.json()
+    }else {
+        throw new Error('Unable to fetch puzzle')
+    }
+    }).then((data)=>{
+            return  data.find((country) => country.cca2 === countryCode)
+    })
+}
 const getCountryDetails = (countryCode, callback) => {
     const request = new XMLHttpRequest()
 
