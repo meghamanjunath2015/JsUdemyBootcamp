@@ -17,6 +17,12 @@ getCountryWithFetch('AU').then((country) => {
     console.log(`${error}`)
 }})
 
+getCountryWithAsyncAwait('IN').then((country) => {
+    console.log(country.name.official)
+}).catch((error) => {{
+    console.log(`${error}`)
+}})
+
 getTimezoneFromIpinfo().then((data) => {
     console.log(data.timezone)
     console.log(data.region)

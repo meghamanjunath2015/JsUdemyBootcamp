@@ -45,6 +45,17 @@ const getCountryWithFetch = (countryCode) => {
             return  data.find((country) => country.cca2 === countryCode)
     })
 }
+
+const getCountryWithAsyncAwait = async  (countryCode) => {
+    const response = await fetch('https://restcountries.com/v3.1/all', {})
+    if(response.status === 200){
+        const data = await response.json()
+        return data.find((country) => country.cca2 === countryCode)
+    }else{
+        throw new Error('Unable to fetch puzzle')
+    }
+}
+
 const getCountryDetails = (countryCode, callback) => {
     const request = new XMLHttpRequest()
 
