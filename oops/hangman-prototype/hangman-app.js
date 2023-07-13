@@ -15,5 +15,3 @@ submitBtn.addEventListener('click', () => {
     game.hangmanGame()
 })
 
-
-

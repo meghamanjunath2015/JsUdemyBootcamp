@@ -1,9 +1,6 @@
 'use strict'
-const Hangman = function (word, guess) {
+const Hangman = function () {  
 
-    this.choseSecretWord = word 
-    console.log('chosenword' + this.choseSecretWord)
-    
     //Static
     /*//list of secret words in an Array 
     this.wordArray = ["Horse", "Hyena", "Koala","Camel","Bison"]
@@ -12,14 +9,30 @@ const Hangman = function (word, guess) {
 
     //game variables 
     this.guessedLetters = []
-    this.guessCount = guess
+    this.guessCount = 10
     this.isWon = false
+    this.choseSecretWord 
+    this.getSecretWord()
+} 
+
+Hangman.prototype.getSecretWord = async function() { 
+    try{
+        await getRandomWordsWithAsyncAwait(1)
+        .then(result => {
+        this.choseSecretWord = result.toLowerCase()
+        console.log('result:', result)
+        })
+    }
+    catch (error) {
+        console.log('Error:', error)
+    }
 }
 
 //whatever is there in this.guessedLetters, compare them with chose secret letter and display it [a, e, c] ==> ****e
 Hangman.prototype.displayWord = function () {
     let displayOnScreen = ''
-    for (let element in this.choseSecretWord) {
+    let element
+    for (element in this.choseSecretWord) {
         (this.guessedLetters.includes(this.choseSecretWord[element])) ? displayOnScreen += this.choseSecretWord[element] : displayOnScreen += '*'
     }
     wordDisplay.textContent = displayOnScreen
