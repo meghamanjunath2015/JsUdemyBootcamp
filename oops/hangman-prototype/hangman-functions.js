@@ -20,7 +20,7 @@ Hangman.prototype.getSecretWord = async function() {
         await getRandomWordsWithAsyncAwait(1)
         .then(result => {
         this.choseSecretWord = result.toLowerCase()
-        console.log('result:', result)
+        //console.log('result:', result)
         })
     }
     catch (error) {
@@ -31,8 +31,7 @@ Hangman.prototype.getSecretWord = async function() {
 //whatever is there in this.guessedLetters, compare them with chose secret letter and display it [a, e, c] ==> ****e
 Hangman.prototype.displayWord = function () {
     let displayOnScreen = ''
-    let element
-    for (element in this.choseSecretWord) {
+    for (let element in this.choseSecretWord) {
         (this.guessedLetters.includes(this.choseSecretWord[element])) ? displayOnScreen += this.choseSecretWord[element] : displayOnScreen += '*'
     }
     wordDisplay.textContent = displayOnScreen
