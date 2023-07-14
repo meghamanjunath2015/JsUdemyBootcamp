@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    background: #2B292E;
+    background: radial-gradient(ellipse farthest-corner at left top, #f35464 30%, #841F4B 100%);
     color: #fafafa;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 1.6rem;
@@ -39,6 +39,7 @@ p {
 .display-word {
     display: flex;
     margin-bottom: 4.8rem;
+    text-align: center;
 }
 
 .button {
@@ -47,7 +48,7 @@ p {
     border-bottom: 2px solid #603a88;
     cursor: pointer;
     color: white;
-    font-size: 1.4rem;
+    font-size: 2rem;
     font-weight: 300;
     padding: .8rem;
     transition: background .3s ease, color .3s ease;
@@ -56,18 +57,15 @@ p {
 .button:hover {
     background: #5F3A87;
 }
-
-.image {
+  
+#image img {
+    max-width: 100%;
+    max-height: 50%;
+    align-items: center;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 50vh;
-  }
-  
-#image img {
-    max-width: 100%;
-    max-height: 100%;
-    align-items: center;
   }
 
 .main {
@@ -75,9 +73,41 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .content {
     margin: 5px;
     padding: 5px;
 }
+
+#title {
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: bold;
+    animation-name: slideIn;
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+#guess-input {
+  width: 200px; 
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+

@@ -3,23 +3,22 @@
     <head>
         <title>Hangman Game</title>
         <link href="hangman-style.css" rel="stylesheet">
-        <link href="Hangman-768x402.webp" rel="icon">
+        <link href="hangman-image.png" rel="icon">
     </head>
     <body>
     <div class="main">
             <div id="image" class="content">
-                <img src="Hangman-768x402.webp" alt="image">
+                <img src="hangman-image.png" alt="image">
             </div>
-            <br>
-            <br>
             <div class="content">
-                <h1>Hangman Game</h1>
+                <h1 id="title">Hangman Game</h1>
                 <br>
-                <p> Guess The Secret Word </p>
+                <p> Guess The Secret Word Within 10 Counts! </p>
                 <div>
                     <p id="display-word"></p>
                 </div>
                 <p id="remaining-guesses"></p>
+                <br>
             <input type="text" id="guess-input" />
             <button id="submit" class="button">Submit</button>
             </div>
