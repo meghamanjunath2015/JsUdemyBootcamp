@@ -2,16 +2,25 @@
 <html>
     <head>
         <title>Hangman Game</title>
+        <link href="hangman-style.css" rel="stylesheet">
     </head>
     <body>
-        <h1>Hangman Game</h1>
-        <p> Guess The Secret Word </p>
-        <p id="display-word"></p>
-        <p id="remaining-guesses"></p>
+    <div>
+            <h1>Hangman Game</h1>
+            <br>
+            <br>
+            <p> Guess The Secret Word </p>
+            <div>
+                <p id="display-word"></p>
+            </div>
+            <p id="remaining-guesses"></p>
+            <br>
+            <br>
         <input type="text" id="guess-input" />
-        <button id="submit">Submit</button>
-        <script src="hangman-req.js"></script>
-        <script src="hangman-functions.js"></script>
-        <script src="hangman-app.js"></script>
+        <button id="submit" class="button">Submit</button>
+    </div>
+        <script src="scripts/hangman-req.js"></script>
+        <script src="scripts/hangman-functions.js"></script>
+        <script src="scripts/hangman-app.js"></script>
     </body>
 </html>

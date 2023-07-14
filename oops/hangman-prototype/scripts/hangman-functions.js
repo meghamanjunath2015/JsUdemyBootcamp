@@ -34,7 +34,12 @@ Hangman.prototype.displayWord = function () {
     for (let element in this.choseSecretWord) {
         (this.guessedLetters.includes(this.choseSecretWord[element])) ? displayOnScreen += this.choseSecretWord[element] : displayOnScreen += '*'
     }
-    wordDisplay.textContent = displayOnScreen
+
+    wordDisplay.innerHTML = ''
+    const ele = document.createElement('span')
+    ele.textContent = displayOnScreen
+    wordDisplay.appendChild(ele)
+
 }
 
 Hangman.prototype.showGuessCounter = function () {
