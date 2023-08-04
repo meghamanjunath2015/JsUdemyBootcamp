@@ -2,29 +2,36 @@
 <html>
     <head>
         <title>Notes Taking App</title>
+        <link href="notes-style.css" rel="stylesheet">
       </head>
       <body>
-        <h1>Hello, This is note taking App!</h1>
-        <form id="form1">
-          <input type="text" placeholder="Add Title to your Note" name="addTitle">
-          <input type="text" placeholder="Add Details" name="addDetails">
-          <button id="submit-button" name="Submit">Submit</button>
-        </form>
-        <br>
-        <input id="search-input" type="text" placeholder="Enter Search Criteria">
-        <select id="sort-by">
-          <option value="byEdited">Sory By Last Edited</option>
-          <option value="byCreated">Sory By Created</option>
-          <option value="alphabetical">Sory By Alphabetical</option>
-        </select>
-        <br>
+        <div id="wrapper">
+          <h1>Hello, This is note a taking App!</h1>
+          <div id="notes-operation">
+            <input id="search-input" type="text" placeholder="Enter Search Criteria">
+            <select id="sort-by">
+            <option value="byEdited">Sory By Last Edited</option>
+            <option value="byCreated">Sory By Created</option>
+            <option value="alphabetical">Sory By Alphabetical</option>
+            </select>
+            <button id="clearAll" name="clearAll" class="button">Clear All</button>
+            <br>
+            <br>
+          </div>
+          <div id="notes-edit-form">
+            <form id="form1">
+              <input type="text" placeholder="Add Title to your Note" name="addTitle">
+              <input type="text" placeholder="Add Details" name="addDetails">
+              <button id="submit-button" name="Submit" class="button">Submit</button>
+            </form>
+          </div>
+        </div>
         <div id="notes">
         </div>
-        <br>
-        <button id="clearAll" name="clearAll">Clear All</button>
+        </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js" integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="/uuidv4.js"></script>
-        <script src="notes-functions.js"></script>
-        <script src="notes-app.js"></script>
+        <script src="scripts/notes-functions.js"></script>
+        <script src="scripts/notes-app.js"></script>
       </body>    
 </html>
