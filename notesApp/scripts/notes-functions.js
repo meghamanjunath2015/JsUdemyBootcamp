@@ -13,29 +13,38 @@ const getSavedNotes = () => {
 //Generate the DOM structure for new note
 const addNoteToDom = (note) => {
         const noteElement = document.createElement('div')
+        noteElement.classList.add('note-container')
         const noteTitle = document.createElement('a')
+        noteTitle.classList.add('note-title')
         const noteBody = document.createElement('a')
+        noteBody.classList.add('note-body')
         const titleLabel = document.createElement('label')
+        titleLabel.classList.add('label')
         const bodyLabel = document.createElement('label')
+        bodyLabel.classList.add('label');
         noteTitle.textContent  = note.title
         noteBody.textContent = note.body
 
         //set attribute for label
         titleLabel.setAttribute("for", "myInput")
         titleLabel.textContent = "Title: "
+        titleLabel.style.color = '#007bff';
+        titleLabel.style.textDecoration = 'none';
         bodyLabel.setAttribute("for", "myInput")
         bodyLabel.textContent = "Body: "
+        bodyLabel.style.color = '#007bff';
+        bodyLabel.style.textDecoration = 'none';
         titleLabel.style.fontWeight = "bold"
         bodyLabel.style.fontWeight = "bold"
 
         //append
         noteElement.innerHTML  += "<br>"
         noteElement.appendChild(titleLabel)
-        noteElement.appendChild(noteTitle)
-        noteTitle.innerHTML += "<br>"
+        noteTitle.classList.add('spacer')
+        titleLabel.appendChild(noteTitle)
         noteElement.appendChild(bodyLabel)
-        noteElement.appendChild(noteBody)
-        noteBody.innerHTML += "<br>"
+        noteBody.classList.add('spacer')
+        bodyLabel.appendChild(noteBody)
         noteBody.setAttribute('href', 'editNote.html' + '#' + note.id)
         document.querySelector('#notes').appendChild(noteElement)
 }
