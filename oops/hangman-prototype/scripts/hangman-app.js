@@ -8,6 +8,7 @@ const resetBtn = document.getElementById('reset')
 // Initialize the game
 const game = new Hangman()
 game.displayWord()
+
 // Initialize the guesses 
 game.showGuessCounter()
 
@@ -15,5 +16,4 @@ game.showGuessCounter()
 submitBtn.addEventListener('click', () => {
     game.hangmanGame()
 })
-
 

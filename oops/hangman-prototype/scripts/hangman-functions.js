@@ -20,7 +20,7 @@ Hangman.prototype.getSecretWord = async function() {
         await getRandomWordsWithAsyncAwait(1)
         .then(result => {
         this.choseSecretWord = result.toLowerCase()
-        //console.log('result:', result)
+        console.log('result:', result)
         })
     }
     catch (error) {
@@ -79,7 +79,7 @@ Hangman.prototype.hangmanGame = function () {
         }
     }
     else {
-        alert(`Guess count is ${this.guessCount}, Sorry! Try again, The word was ${this.choseSecretWord}`)
+        alert(`Sorry! You ran out of guesses, you have ${this.guessCount} count left :( and the Secret word was ""${this.choseSecretWord}" :)`)
     }
 }
 
