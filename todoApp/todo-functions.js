@@ -39,8 +39,16 @@ const createNewDomElement = (list, appendToString) => {
             todoElement.appendChild(todoText)
     
             //setup remove button
-            removeBtn.textContent = 'x'
+            removeBtn.textContent = 'remove'
+            removeBtn.classList.add('button', 'button--text')
             todoElement.appendChild(removeBtn)
+
+            //setup container - todoElement
+            checkbox.classList.add('list-item')
+            todoElement.classList.add('list-item__container')
+
+            //setup x button 
+            removeBtn.classList.add('button', 'button--text')
             
             //Event listener for remove button 
             removeBtn.addEventListener('click', function(){
@@ -48,6 +56,7 @@ const createNewDomElement = (list, appendToString) => {
             })
             document.querySelector(appendToString).appendChild(todoElement)
             })
+
     }
 }
 
