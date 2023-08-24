@@ -14,15 +14,16 @@ const getSavedTodo = () => {
 const createNewDomElement = (list, appendToString) => {
     if(list){
         list.forEach(element => {
-            const todoElement = document.createElement('div')
+            const containerEl = document.createElement('div')
+            const todoEl = document.createElement('label')
             const checkbox = document.createElement('input')
             const todoText = document.createElement('span')
             const removeBtn = document.createElement('button')
     
             //Set up todo checkbox
             checkbox.setAttribute('type', 'checkbox')
-            todoElement.appendChild(checkbox)
-
+            checkbox.checked = element.completed   
+            containerEl.appendChild(checkbox)
             //Event Listener for checkbox
             checkbox.addEventListener('change', function(e){
                 markCheckbox(element.id)
@@ -36,25 +37,23 @@ const createNewDomElement = (list, appendToString) => {
     
             //setup the todo Text 
             todoText.textContent = element.text
-            todoElement.appendChild(todoText)
+            containerEl.appendChild(todoText)
     
+             //setup container - containerEl
+             todoEl.classList.add('list-item')
+             containerEl.classList.add('list-item__container')
+             todoEl.appendChild(containerEl)
+
             //setup remove button
             removeBtn.textContent = 'remove'
             removeBtn.classList.add('button', 'button--text')
-            todoElement.appendChild(removeBtn)
-
-            //setup container - todoElement
-            checkbox.classList.add('list-item')
-            todoElement.classList.add('list-item__container')
-
-            //setup x button 
-            removeBtn.classList.add('button', 'button--text')
+            todoEl.appendChild(removeBtn)
             
             //Event listener for remove button 
             removeBtn.addEventListener('click', function(){
             removeTodo(element.id)
             })
-            document.querySelector(appendToString).appendChild(todoElement)
+            document.querySelector(appendToString).appendChild(todoEl)
             })
 
     }

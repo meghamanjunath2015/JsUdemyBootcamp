@@ -4,9 +4,14 @@ This bootcamp completion includes -
 code challenges: 80
 Lectures: 155
 Video: 29.5 total hours
-covers the modern ES6 and ES7 JavaScript features 
+covers the modern ES6 and ES8 JavaScript features 
 
 Things needed: 
 Install node.js
 Use Live Server on VS
 npm install uuid - for UUID generation 
+npm install -g babel-cli@6.26.0
+Install Surge 
+
+//Once you download the code
+npm install // looks into package.json and it installs all the dependency

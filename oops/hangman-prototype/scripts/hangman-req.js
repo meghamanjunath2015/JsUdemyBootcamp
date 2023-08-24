@@ -28,13 +28,13 @@ const getRandomWords = (wordCount) => new Promise((resolve, reject) => {
         }
     })
 
-    request.open('GET', `https://puzzle.mead.io/puzzle?wordCount=${wordCount}`)
+    request.open('GET', `//puzzle.mead.io/puzzle?wordCount=${wordCount}`)
     request.send()
 
 })
 
 const getRandomWordsWithFetch = (wordCount) => {
-    return fetch(`https://puzzle.mead.io/puzzle?wordCount=${wordCount}`, {}).then( (response) => {
+    return fetch(`//puzzle.mead.io/puzzle?wordCount=${wordCount}`, {}).then( (response) => {
     if(response.status === 200) {
         //promise
          return response.json()
@@ -49,7 +49,7 @@ const getRandomWordsWithFetch = (wordCount) => {
 }
 
 const getRandomWordsWithAsyncAwait = async (wordCount) => {
-    const response = await fetch(`https://puzzle.mead.io/puzzle?wordCount=${wordCount}`, {})
+    const response = await fetch(`//puzzle.mead.io/puzzle?wordCount=${wordCount}`, {})
     if(response.status === 200){
         const data = await response.json()
         return data.puzzle
