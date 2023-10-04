@@ -1,8 +1,11 @@
-const nameP='Jen'
+const nameP='Mike'
 console.log(nameP)
 
-class hangman {
+class Hangman {
     mymethod(){
         return 'Hello'
     }
 }
+
+const hangman = new Hangman()
+console.log(hangman.mymethod())

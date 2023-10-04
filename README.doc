@@ -13,5 +13,14 @@ npm install uuid - for UUID generation
 npm install -g babel-cli@6.26.0
 Install Surge 
 
-//Once you download the code
+//overview
 npm install // looks into package.json and it installs all the dependency
+npm run build
+npm uninstall 
+npm install webpack@4.5.0 webpack-cli@2.0.14
+
+
+//errors: 
+1. "Error: error:0308010C:digital envelope routines::unsupported" - after running webpack on terminal
+S: 
+export NODE_OPTIONS=--openssl-legacy-provider

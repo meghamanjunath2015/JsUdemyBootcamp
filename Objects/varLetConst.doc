@@ -2,7 +2,7 @@ var:
 a. Variables declared with var have FUNCTION or GLOBAL scope --> they are accessible throughout the entire function or globally 
 if declared outside any function.
 b. Var variables are HOISTED --> they are moved to top of their scope during compilation 
-c. Var allows variable redeclaration and is not block scoped 
+c. Var allows variable redeclaration and is not block scoped , and that changed value is seen throughout the function 
 
 function example() {
   var x = 10;
