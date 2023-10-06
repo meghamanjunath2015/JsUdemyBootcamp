@@ -2,7 +2,7 @@
   "name": "boilerplate",
   "version": "1.0.0",
   "description": "",
-  "main": "input.js",
+  "main": "source/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "live-server public/scripts/index.html",
@@ -13,9 +13,10 @@
   "license": "ISC",
   "dependencies": {
     "babel-preset-env": "^1.6.1",
-    "webpack-cli": "^5.1.4"
+    "live-server": "1.2.2",
+    "webpack-cli": "^2.0.14"
   },
   "devDependencies": {
-    "webpack": "^5.88.2"
+    "webpa ck": "^4.5.0"
   }
 }
