@@ -13,10 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "babel-preset-env": "^1.6.1",
-    "live-server": "1.2.2",
-    "webpack-cli": "^2.0.14"
+    "live-server": "1.2.2"
   },
   "devDependencies": {
-    "webpa ck": "^4.5.0"
   }
 }
