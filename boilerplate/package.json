@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "live-server public/scripts/index.html",
     "webpack": "webpack",
-    "build": "babel source/index.js --out-file public/bundle.js --presets env --watchC"
+    "build": "babel source/index.js --out-file public/bundle.js --presets env --watchC webpack --config webpack.config.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +16,7 @@
     "live-server": "1.2.2"
   },
   "devDependencies": {
+    "webpack": "^5.90.1",
+    "webpack-cli": "^5.1.4"
   }
 }
