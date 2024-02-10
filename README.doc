@@ -42,7 +42,13 @@ npm run test
 
 //how to get node_modules back ?
 npm install (this case - in boilerplate)
+//how to run packages locally without adding them to path 
 
+/*Reason what is npx
+Package Execution: npx is designed to execute packages. It's particularly useful for running packages that have been installed locally in a project without adding them to the system's PATH or running them from the node_modules/.bin directory.
+One-Off Execution: npx allows you to execute a package directly from the npm registry without permanently installing it. This is handy for running packages for one-time scripts or commands without cluttering your global installations.
+Temporary Installation: If npx doesn't find the package you're trying to run installed locally, it temporarily installs the package from the npm registry, executes it, and then removes the temporary install. This ensures you're always running the latest version of the package for one-off commands.
+*/
 //errors: 
 1. "Error: error:0308010C:digital envelope routines::unsupported" - after running webpack on terminal
 S: export NODE_OPTIONS=--openssl-legacy-provider
