@@ -1,1 +1,0 @@
-(()=>{"use strict";console.log("utilites.js");const o="MeghA ManjunAth";console.log("index.js"),console.log(33),console.log(`${o.toUpperCase()}!`),console.log(`${o.toLowerCase()}!`)})();
