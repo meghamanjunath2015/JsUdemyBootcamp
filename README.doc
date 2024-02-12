@@ -47,3 +47,16 @@ npm install (this case - in boilerplate)
 //errors: 
 1. "Error: error:0308010C:digital envelope routines::unsupported" - after running webpack on terminal
 S: export NODE_OPTIONS=--openssl-legacy-provider
+
+2. Error: "Cannot find module" error using Node.js
+//Clean up on dependencies
+1. rm -rf node_modules
+2. rm -f package-lock.json
+3. npm cache clean --force //Clear the Node.js cache, which may be corrupted
+4. npm install // reinstall the dependencies
+
+3. Error: Cannot read property 'bindings' of null
+Details: ERROR in ./source/scream.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+TypeError: /Users/meghamanjunath/Documents/JsUdemyBootcamp/boilerplate/source/scream.js: Cannot read properties of null (reading 'bindings')
+was: { "presets": ["env"] }  change to { "presets": ["@babel/preset-env"] } because you are using for 7.x

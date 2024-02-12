@@ -6,16 +6,16 @@ module.exports = {
         path: path.resolve(__dirname, 'public/scripts'),
         filename: 'bundle.js'
     }, 
-    /*module: { 
-        test: /\.js$/,
-        exclude: /node_modules/,
+    module: { 
         rules: [{
+            test: /\.js$/,
+            exclude: /node_modules/,
             use: {
-                loaders: 'babel-loader', 
+                loader: 'babel-loader', 
                 options: {
-                    presets: ['env']
+                    presets: ["@babel/preset-env"]
                 }
             }
         }]
-    }*/
+    }
 }

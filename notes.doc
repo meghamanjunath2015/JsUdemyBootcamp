@@ -31,8 +31,8 @@ One-Off Execution: npx allows you to execute a package directly from the npm reg
 Temporary Installation: If npx doesn't find the package you're trying to run installed locally, it temporarily installs the package from the npm registry, executes it, and then removes the temporary install. This ensures you're always running the latest version of the package for one-off commands.
 */
 
-
-
+ //"build": "babel source/index.js --out-file public/bundle.js --presets env --watchC webpack --config webpack.config.js"
+was replaced by build: webpack 
 
 
 
