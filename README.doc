@@ -1,0 +1,54 @@
+# JsUdemyBootcamp
+
+This bootcamp completion includes -  
+code challenges: 80
+Lectures: 155
+Video: 29.5 total hours
+covers the modern ES6 and ES8 JavaScript features 
+
+Things needed after downloading the code: 
+Install node.js
+//donotuse - Use Live Server on VS 
+//donotuse -npm install uuid - for UUID generation 
+//donotuse -npm install -g babel-cli@6.26.0
+Install Surge 
+npm install
+npm run build
+npm run test 
+
+//overview
+npm install // looks into package.json and it installs all the dependency
+npm run build
+npm uninstall 
+//donotuse -
+
+
+
+
+/*
+//babel 
+0. root of installation here - folder called boilerplate
+1. install init (to install local modules) 
+2. install babel preset(to convert ES6 and ES7) - npm install babel-preset-env@1.6.1, all the installed modules live in node_modules folder
+3. install babel to local directory - boilerplate - npm install -g babel-cli@6.26.0
+2. create input and output file 
+3. Run babel using preset - babel input.js --out-file output.js --presets env
+4. usual folder structure - public/scripts for output/web applications, source folder for input files ex: index.js 
+*/
+
+//how to run scripts? 
+npm run build
+npm run test 
+
+//how to get node_modules back ?
+npm install (this case - in boilerplate)
+//how to run packages locally without adding them to path 
+
+/*Reason what is npx
+Package Execution: npx is designed to execute packages. It's particularly useful for running packages that have been installed locally in a project without adding them to the system's PATH or running them from the node_modules/.bin directory.
+One-Off Execution: npx allows you to execute a package directly from the npm registry without permanently installing it. This is handy for running packages for one-time scripts or commands without cluttering your global installations.
+Temporary Installation: If npx doesn't find the package you're trying to run installed locally, it temporarily installs the package from the npm registry, executes it, and then removes the temporary install. This ensures you're always running the latest version of the package for one-off commands.
+*/
+//errors: 
+1. "Error: error:0308010C:digital envelope routines::unsupported" - after running webpack on terminal
+S: export NODE_OPTIONS=--openssl-legacy-provider

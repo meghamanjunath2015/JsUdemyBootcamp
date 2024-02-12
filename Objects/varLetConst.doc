@@ -1,0 +1,36 @@
+var: 
+a. Variables declared with var have FUNCTION or GLOBAL scope --> they are accessible throughout the entire function or globally 
+if declared outside any function.
+b. Var variables are HOISTED --> they are moved to top of their scope during compilation 
+c. Var allows variable redeclaration and is not block scoped , and that changed value is seen throughout the function 
+
+function example() {
+  var x = 10;
+  if (true) {
+    var x = 20;
+    console.log(x); // Outputs 20
+  }
+  console.log(x); // Outputs 20
+}
+
+let: 
+a. It is block scoped variables  - variables are limited within the block in which it is declared 
+b. LET variables are NOT hoisted --> they are not moved to top of their scope 
+c. it prevents redeclaration within the same scope
+
+function example() {
+  let x = 10;
+  if (true) {
+    let x = 20;
+    console.log(x); // Outputs 20
+  }
+  console.log(x); // Outputs 10
+}
+
+const: 
+const is also used to declare variables that are BLOCK_SCOPED and whose value remains constant (immutable) throughout the execution
+const PI = 3.14
+console.log(PI); // Outputs 3.14
+
+// Trying to reassign the value of a constant variable will result in an error
+PI = 10

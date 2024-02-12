@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hangman Game</title>
+        <link href="hangman-style.css" rel="stylesheet">
+        <link href="hangman-image.png" rel="icon">
+    </head>
+    <body>
+    <div class="main">
+            <div id="image" class="content">
+                <img src="hangman-image.png" alt="image">
+            </div>
+            <div class="content">
+                <h1 id="title">Hangman Game</h1>
+                <br>
+                <p> Guess The Secret Word Within 10 Counts! </p>
+                <div>
+                    <p id="display-word"></p>
+                </div>
+                <p id="remaining-guesses"></p>
+                <br>
+            <input type="text" id="guess-input" />
+            <button id="submit" class="button">Submit</button>
+            </div>
+    </div>
+        <script src="scripts/hangman-req.js"></script>
+        <script src="scripts/hangman-functions.js"></script>
+        <script src="scripts/hangman-app.js"></script>
+    </body>
+</html>
