@@ -17,5 +17,13 @@ module.exports = {
                 }
             }
         }]
-    }
+    },
+    devServer: {
+        static: {
+          directory: path.join(__dirname, 'public'),
+        },
+        compress: true,
+        port: 5500,
+      },
+      devtool: 'source-map'
 }
