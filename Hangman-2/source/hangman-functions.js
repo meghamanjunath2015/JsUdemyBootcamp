@@ -1,4 +1,6 @@
 'use strict'
+import getPuzzle from './hangman-req'
+import { wordDisplay, guessDisplay, guessInput } from './index'
 const Hangman = function () {  
 
     //Static
@@ -17,7 +19,7 @@ const Hangman = function () {
 
 Hangman.prototype.getSecretWord = async function() { 
     try{
-        await getRandomWordsWithAsyncAwait(1)
+        await getPuzzle(1)
         .then(result => {
         this.choseSecretWord = result.toLowerCase()
         console.log('result:', result)
@@ -82,6 +84,8 @@ Hangman.prototype.hangmanGame = function () {
         alert(`Sorry! You ran out of guesses, you have ${this.guessCount} count left :( and the Secret word was ""${this.choseSecretWord}" :)`)
     }
 }
+
+export {Hangman as default}
 
 /*
 Arrow functions have different behavior compared to regular function expressions, especially in how they handle the this keyword. Arrow functions do not bind their own this value but inherit it from the surrounding context.

@@ -49,7 +49,7 @@ const getRandomWordsWithFetch = (wordCount) => {
 }
 
 const getRandomWordsWithAsyncAwait = async (wordCount) => {
-    const response = await fetch(`//puzzle.mead.io/puzzle?wordCount=${wordCount}`, {})
+    const response = await fetch(`//puzzle.mead.io/puzzle?wordCount=${wordCount}`, {mode: 'cors'})
     if(response.status === 200){
         const data = await response.json()
         return data.puzzle
@@ -57,3 +57,5 @@ const getRandomWordsWithAsyncAwait = async (wordCount) => {
         throw new Error('Unable to fetch puzzle')
     }
 }
+
+export { getRandomWordsWithAsyncAwait as default }
