@@ -62,6 +62,8 @@ because after installing webpack-dev-server both became redundent
 
 
 
+
+
  /***
  Ensuring your JavaScript project adheres to code standards is crucial for maintainability, readability, and scalability. Here’s how you can ensure your project aligns with accepted JavaScript standards:
 

@@ -5,13 +5,14 @@
   "main": "source/index.js",
   "scripts": {
     "dev-server": "webpack-dev-server --mode development",
-     "build": "webpack --watch --mode development"
+    "build": "webpack --watch --mode development"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "babel-preset-env": "^1.6.1",
-    "live-server": "^1.1.0"
+    "live-server": "^1.1.0",
+    "validator": "^13.11.0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",

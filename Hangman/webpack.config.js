@@ -23,7 +23,7 @@ module.exports = {
           directory: path.join(__dirname, 'public'),
         },
         compress: true,
-        port: 5500,
+        port: 8080,
       },
       devtool: 'source-map'
 }
