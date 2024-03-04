@@ -1,7 +1,6 @@
 import { getTodos, saveTodos, removeTodo } from "./todos"
 import { getFilters } from "./filters"
 
-const todos = getTodos()
 const getFilter = getFilters()
 // renderTodos
 // Arguments: none
@@ -19,7 +18,7 @@ const renderTodo = ()=> {
     }
   else{
     document.querySelector('#todos').innerHTML = ''
-    createNewDomElement(todos, '#todos')
+    createNewDomElement(getTodos(), '#todos')
     }
 } 
 
@@ -74,20 +73,21 @@ const createNewDomElement = (list, appendToString) => {
     }
 }
 //find index method 
-const findIndex = (id) => todos.findIndex(todo => todo.id === id)
+const findIndex = (id) => getTodos().findIndex(todo => todo.id === id)
 
 //mark the checkbox for todo item 
 const markCheckbox = (id) => {
     const index =  findIndex(id)
     if(index > -1){
-        todos[index].completed = true
+        const todoList = getTodos()
+        todoList[index].completed = true
     }
     saveTodos()
 }
 
 //Hide completed todo items
 const hideTodo = () => {
-    let filteredlist = todos.filter((todo) => todo.text.toLowerCase().includes(getFilter.searchText.toLowerCase()))
+    let filteredlist = getTodos().filter((todo) => todo.text.toLowerCase().includes(getFilter.searchText.toLowerCase()))
     let list
     if(getFilter.hideCompleted == true){
          list = filteredlist.filter(function(todo){

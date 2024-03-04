@@ -6,7 +6,6 @@ import { renderTodo, hideTodo } from "./views";
 // Render initial todos
 renderTodo()
 const getFilter = getFilters()
-const todos = getTodos()
 
 //Assign search text to filters object and call render todo notes
 document.querySelector('#search-todo').addEventListener('input', (e) => {
