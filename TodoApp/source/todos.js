@@ -54,6 +54,7 @@ const removeTodo = (id) => {
     renderTodo()
 }
 
+//addtodo
 // toggleTodo
 // Arguments: id of todo to toggle
 // Return value: none
